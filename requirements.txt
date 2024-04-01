@@ -1,0 +1,9 @@
+ipinfo
+configparser
+requests
+tqdm
+git+https://github.com/weatherapicom/python.git
+paramiko
+wikipedia
+langdetect
+gtts
