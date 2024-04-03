@@ -72,7 +72,7 @@ class VPNDetectorBot(TeamTalk):
 
                 total_size = int(response.headers.get('content-length', 0))
                 block_size = 4096
-                with open("spamKiller.zip", "wb") as f:
+                with open("TTUtilities.zip", "wb") as f:
                     for data in tqdm(response.iter_content(block_size), total=total_size / block_size, unit='KiB'):
                         f.write(data)
 
