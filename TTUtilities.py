@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*
 from TeamTalk5 import TeamTalk, User, TextMessage, BanType, ttstr, BannedUser, TextMsgType, Subscription, TTMessage, VideoCodec
 import TeamTalk5
 import time
@@ -10,10 +11,11 @@ import zipfile
 import sys
 from tqdm import tqdm
 from swagger_client import *
-from ctypes import c_int  # Import c_int from ctypes
+from ctypes import c_int
 import ctypes
 import random
 import threading
+from threading import Thread, Lock
 import paramiko
 import wikipedia
 import langdetect
@@ -21,12 +23,12 @@ from gtts import gTTS
 import ast
 
 def load_messages(filename):
-    with open(filename, "r") as f:
+    with open(filename, "r", encoding="utf-8") as f:
         messages = [line.strip() for line in f]
     return messages
 
 def load_blacklist(filename):
-    with open(filename, "r") as f:
+    with open(filename, "r", encoding="utf-8") as f:
         blacklist = [line.strip().lower() for line in f]
     return blacklist
 
@@ -45,6 +47,7 @@ class VPNDetectorBot(TeamTalk):
         self.excluded_ips = []
         self.doSubscribe(0, Subscription.SUBSCRIBE_USER_MSG)
         self.encrypted=False
+        self.user_join_timers={}
 
         if not os.path.isfile("config.ini"):
             self.create_config_file()
@@ -52,13 +55,13 @@ class VPNDetectorBot(TeamTalk):
             self.read_config_file()
 
     def check_for_updates(self):
-        current_version = "1.1"
+        current_version = "1.2"
         update_url = "https://blindmasters.org/TTUtilities/version.txt"
         download_url = "https://blindmasters.org/TTUtilities/TTUtilities.zip"
 
         try:
             response = requests.get(update_url)
-            response.raise_for_status()  # Raise an exception for error status codes
+            response.raise_for_status()
 
             server_version = response.text.strip()
 
@@ -155,6 +158,62 @@ class VPNDetectorBot(TeamTalk):
             else:
                 print("Client name can't be blank ")
 
+        while True:
+            jail_users_str = input("Enter usernames to be jailed (comma-separated, leave blank to disable): ")
+            if jail_users_str:
+                self.jail_users = jail_users_str.split(",")
+                break
+            else:
+                self.jail_users = []
+                break
+
+        while True:
+            self.jail_channel = input("Enter the jail channel path: ")
+            if self.jail_channel:
+                break
+            elif self.jail_channel=="":
+                print("Using the default jail channel: /jail/ ")
+                self.jail_channel="/jail/"
+                break
+
+        print("Please enter a jail timeout between each attempt if the user trys to joins another channel: this timeout will start, and start counting every time the user joins another channel.")
+        print("the jail flood count means how many counts within the specified timeout to ban and kick the user.\nFor example: if the jail timeout is 10, and jail flood count is 5: it means that when the jailed user trys to joins another channel: the bot will move them back, and starts a timer for 10 seconds, within this timer: if the user attempts to leave the jail channel more than 5 times: they will be banned and kicked.")
+
+        while True:
+            join_timer_str = input("Specify the jail timeout in seconds (leave blank for default 10): ")
+            if join_timer_str:
+                try:
+                    self.jail_timer_seconds = int(join_timer_str)
+                    break
+                except ValueError:
+                    print("Error: Please enter a valid number.")
+            else:
+                print("Using the default value 10 ")
+                self.jail_timer_seconds = 10
+                break
+
+        while True:
+            join_count_str = input("Specify the join count threshold (leave blank for default 5): ")
+            if join_count_str:
+                try:
+                    self.jail_flood_count = int(join_count_str)
+                    break
+                except ValueError:
+                    print("Error: Please enter a valid number.")
+            else:
+                print("Using the default value 5 ")
+                self.jail_flood_count = 5
+                break
+
+        while True:
+            jail_names_str=input("Optionally: Please input jailed nicknames, this is different from jailed users, because this relys on nicknames, while the other option relys on usernames: ")
+            if jail_names_str:
+                self.jail_names=jail_names_str.split(",")
+                break
+            else:
+                self.jail_names=[]
+                break
+
         print("Please note that the following 2 features are optional, the character limit is to prevent long nicknames, if you want to disable it: enter  0 when asked.")
         random_message_interval =int(input("Specify the interval between sending messages, Leave blank to disable: "))
 
@@ -177,7 +236,7 @@ class VPNDetectorBot(TeamTalk):
             try:
                 ssh_port=int(ssh_port_str)
             except ValueError:
-                pass  # defaulting to port 22
+                pass
         else:
             ssh_port=22
 
@@ -214,6 +273,11 @@ class VPNDetectorBot(TeamTalk):
         config["bot"] = {
             "nickname": bot_nickname,
             "client_name": bot_client_name,
+            "jail_users": ",".join(self.jail_users),
+            "jail_names": ",".join(self.jail_names),
+            "jail_channel": self.jail_channel,
+            "jail_timer_seconds": self.jail_timer_seconds,
+            "jail_flood_count": self.jail_flood_count,
             "random_message_interval": random_message_interval,
             "char_limit": char_limit,
         }
@@ -247,6 +311,11 @@ class VPNDetectorBot(TeamTalk):
         bot_section = config["bot"]
         self.bot_nickname = bot_section.get("nickname")
         self.bot_client_name = bot_section.get("client_name")
+        self.jail_users = bot_section.get("jail_users", "").split(",")
+        self.jail_names = bot_section.get("jail_names", "").split(",")
+        self.jail_channel = bot_section.get("jail_channel")
+        self.jail_timer_seconds = bot_section.getint("jail_timer_seconds", 10)
+        self.jail_flood_count = bot_section.getint("jail_flood_count", 5)
         random_message_interval_str = bot_section.get("random_message_interval")
         if random_message_interval_str:
             self.random_message_interval = int(random_message_interval_str)
@@ -293,6 +362,10 @@ class VPNDetectorBot(TeamTalk):
             self.just_joined = False
             return
 
+        if user.szUsername in self.jail_users or user.szNickname in self.jail_names:
+            jail_channel_id = self.getChannelIDFromPath(self.jail_channel)
+            self.doMoveUser(user.nUserID, jail_channel_id)
+
         blacklist = load_blacklist("blacklist.txt")
 
         if self.detection_mode == 1:
@@ -334,6 +407,43 @@ class VPNDetectorBot(TeamTalk):
         country_name = details.country_name
 
         self.send_broadcast_message(f"{user.szNickname} from {country_name} has joined the server")
+
+    def onCmdUserJoinedChannel(self, user: User):
+        if user.szUsername in self.jail_users or user.szNickname in self.jail_names:
+            jail_channel_id = self.getChannelIDFromPath(self.jail_channel)
+            if user.nChannelID != jail_channel_id:
+                self.doMoveUser(user.nUserID, jail_channel_id)  # Move user back to jail channel
+                self.track_user_joins(user)
+
+    def track_user_joins(self, user: User):
+        user_id = user.nUserID
+        if user_id not in self.user_join_timers:
+            self.user_join_timers[user_id] = {
+                "start_time": time.time(),
+                "join_count": 1
+            }
+            Thread(target=self.monitor_user_joins, args=(user_id,)).start()
+        else:
+            self.user_join_timers[user_id]["join_count"] += 1
+
+    def monitor_user_joins(self, user_id):
+        timer_data = self.user_join_timers[user_id]
+        warning_sent = False  # Flag to keep track if warning has been sent
+        while time.time() - timer_data["start_time"] < self.jail_timer_seconds:
+            if timer_data["join_count"] >=3 and not warning_sent:
+                self.privateMessage(user_id, "Warning: You are trying to get out of the jail for more than 3 times, If you continue to spam: You'll be banned, I repeat: Do not spam")
+                warning_sent=True
+            time.sleep(1)  # Check every second
+            if timer_data["join_count"] >= self.jail_flood_count:
+                user = self.getUser(user_id)
+                if user.szUsername=="guest":
+                    self.ban_user(user_id, BanType.BANTYPE_IPADDR)
+                else:
+                    self.ban_user(user_id, 4)
+                self.kick_user(user_id)
+                self.send_broadcast_message(f"{user.szNickname} has been banned due to jail flood protection.")
+                break
+        del self.user_join_timers[user_id]
 
     def onCmdUserTextMessage(self, textmessage: TextMessage):
         print(f"Message received: {textmessage.szMessage} from {textmessage.szFromUsername}")
@@ -466,7 +576,10 @@ class VPNDetectorBot(TeamTalk):
                     tts = gTTS(text=text_to_speak, lang="en-us", tld="us")
                 else:
                     tts = gTTS(text=text_to_speak, lang=language)
-                tts.save(os.path.join("files", "speech.mp3"))
+                try:
+                    tts.save(os.path.join("files", "speech.mp3"))
+                except PermissionError:
+                    pass
 
                 streamer=TeamTalk5.VideoCodec()
                 streamer.nCodec=1
@@ -487,7 +600,10 @@ class VPNDetectorBot(TeamTalk):
                         tts = gTTS(text=text_to_speak, lang="en-us", tld="us")
                     else:
                         tts = gTTS(text=text_to_speak, lang=language)
-                    tts.save(os.path.join("files", "speech.mp3"))
+                    try:
+                        tts.save(os.path.join("files", "speech.mp3"))
+                    except PermissionError:
+                        pass
 
                     streamer=TeamTalk5.VideoCodec()
                     streamer.nCodec=1
@@ -594,7 +710,6 @@ class VPNDetectorBot(TeamTalk):
 
                 message = message.format(name=nickname)
 
-                # Send the broadcast message
                 self.send_broadcast_message(message)
 
                 time.sleep(self.random_message_interval * 60)
