@@ -100,6 +100,37 @@ class Player(mpv.MPV):
         except Exception as e:
             print(f"Error playing stream: {e}")
 
+    def fetch_playlist_entries(self, link):
+        """Fetches playlist entries without resolving streams."""
+        try:
+            ydl_opts = dict(self.ydl_opts)
+            ydl_opts.update({
+                'extract_flat': True,
+                'skip_download': True,
+                'quiet': True,
+                'noplaylist': False,
+            })
+            with self.prefetch_lock:
+                ydl = yt_dlp.YoutubeDL(ydl_opts)
+                info = ydl.extract_info(link, download=False)
+            entries = info.get('entries') if info else None
+            if not entries:
+                return []
+            results = []
+            for entry in entries:
+                if not entry:
+                    continue
+                title = entry.get('title') or "Unknown title"
+                entry_link = entry.get('webpage_url') or entry.get('url') or entry.get('id')
+                if entry_link and not entry_link.startswith("http"):
+                    entry_link = f"https://www.youtube.com/watch?v={entry_link}"
+                if entry_link:
+                    results.append({'title': title, 'link': entry_link})
+            return results
+        except Exception as e:
+            print(f"Error fetching playlist entries: {e}")
+            return []
+
     def prefetch_stream_info(self, link):
         if not link or link in self.prefetch_cache:
             return

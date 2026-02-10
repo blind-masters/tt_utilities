@@ -149,12 +149,16 @@ class PlayerCog:
             self.bot.privateMessage(textmessage.nFromUserID, self._("Invalid command. Usage: /u <link>"))
             return
 
+        link = " ".join(args)
+        if self._looks_like_playlist(link):
+            self.bot.io_pool.submit(self._play_playlist_url_task, link, textmessage.nFromUserID)
+            return
+
         self.player.search_results = []
         self.player.current_search_index = 0
         self._reset_random_pool()
         self.player.clear_prefetch_cache()
 
-        link = " ".join(args)
         self.player.current_link = link
         self.bot.enableVoiceTransmission(True)
         self.player.play_stream(link)
@@ -165,6 +169,33 @@ class PlayerCog:
             self._("Playing: {title}").format(title=self.player.current_title),
         )
         self.bot.doChangeStatus(ttstr(self.bot.bot_config['gender']), ttstr(self._("Playing: {title}").format(title=self.player.current_title)))
+
+    def _looks_like_playlist(self, link):
+        lowered = link.lower()
+        return "list=" in lowered or "/playlist" in lowered
+
+    def _play_playlist_url_task(self, link, user_id):
+        results = self.player.fetch_playlist_entries(link)
+        if not results:
+            self.bot.privateMessage(user_id, self._("No playlist items found."))
+            return
+
+        self.player.clear_prefetch_cache()
+        self.player.search_results = results
+        self.player.current_search_index = 0
+        self._init_random_pool()
+        first_video = results[0]
+        self.player.current_link = first_video['link']
+        self.bot.enableVoiceTransmission(True)
+        self.player.play_stream(first_video['link'])
+        user_nickname = ttstr(self.bot.getUser(user_id).szNickname)
+        self._announce(
+            self._("{nickname} requested playing from a playlist").format(nickname=user_nickname),
+            user_id,
+            self._("Playing: {title}").format(title=first_video['title']),
+        )
+        self.bot.doChangeStatus(ttstr(self.bot.bot_config['gender']), ttstr(self._("Playing: {title}").format(title=self.player.current_title)))
+        self._prefetch_next_in_list()
 
     def handle_play_search_or_pause_command(self, textmessage, *args):
         if not self._is_in_same_channel(textmessage.nFromUserID):
