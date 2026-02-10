@@ -119,7 +119,7 @@ class GeneralCog:
         
         self.bot.privateMessage(user_id, self._("--- Available Commands ---"))
         # Sort commands alphabetically for readability
-        commands = sorted(self.bot.command_handler.commands.items())
+        commands = self.bot.command_handler.commands.items()
         for name, command in commands:
             # If the command is admin-only and the user is not an admin, skip it
             if command.admin_only and not is_admin:

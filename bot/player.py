@@ -1,6 +1,7 @@
 import mpv
 import time
 import asyncio
+import threading
 from py_yt import VideosSearch
 import yt_dlp
 
@@ -13,11 +14,14 @@ class Player(mpv.MPV):
         self.volume=self.playback_config['default_volume']
         self.volume_fading = float(self.playback_config.get('volume_fading', 0) or 0)
         self.current_link=None
+        self.current_title=None
+        self.current_stream_url=None
         self.search_results = {}
         self.current_search_index = 0
         self.recent_history = {}
         self.end_callback = None
         self.set_output_device()
+        self._register_end_callback()
         ydl_opts = {
             'format': 'bestaudio[ext=m4a]/bestaudio/best', 
             'noplaylist': True,
@@ -27,7 +31,10 @@ class Player(mpv.MPV):
 
         if cookiefile:
             ydl_opts['cookiefile'] = cookiefile
+        self.ydl_opts = ydl_opts
         self.ydl = yt_dlp.YoutubeDL(ydl_opts)
+        self.prefetch_cache = {}
+        self.prefetch_lock = threading.Lock()
 
     def search_youtube(self, query):
         """
@@ -74,17 +81,41 @@ class Player(mpv.MPV):
     def play_stream(self, link):
         """Plays the audio stream using yt_dlp."""
         try:
-            info = self.ydl.extract_info(link, download=False)
-            direct_link = info['url']  
-            self.media_title = info['title']
+            cached = self.prefetch_cache.pop(link, None)
+            if cached:
+                direct_link = cached.get('url')
+                self.current_title = cached.get('title')
+            else:
+                with self.prefetch_lock:
+                    info = self.ydl.extract_info(link, download=False)
+                direct_link = info['url']
+                self.current_title = info['title']
+
             self.is_playing = True
             self.play(direct_link)
             self.current_link = link
-            self.observe_property('idle-active', self._on_idle_active) 
-            self.add_to_recent_history(self.media_title, link)
+            self.current_stream_url = direct_link
+            self.add_to_recent_history(self.current_title, link)
 
         except Exception as e:
             print(f"Error playing stream: {e}")
+
+    def prefetch_stream_info(self, link):
+        if not link or link in self.prefetch_cache:
+            return
+        try:
+            with self.prefetch_lock:
+                ydl = yt_dlp.YoutubeDL(self.ydl_opts)
+                info = ydl.extract_info(link, download=False)
+            self.prefetch_cache[link] = {
+                'url': info.get('url'),
+                'title': info.get('title')
+            }
+        except Exception:
+            return
+
+    def clear_prefetch_cache(self):
+        self.prefetch_cache.clear()
 
     def pause_stream(self):
         self.pause=True
@@ -142,16 +173,37 @@ class Player(mpv.MPV):
             time.sleep(step_time)
         self.volume = end
 
-    def _on_idle_active(self, name, value):
-        """Callback function for 'idle-active' property change."""
-        if value is True and self.is_playing:
-            self.is_playing = False
+    def _register_end_callback(self):
+        @self.event_callback("end-file")
+        def _on_end_file(event):
+            ev = event.get("event") or {}
+            if ev.get("reason") not in (mpv.MpvEventEndFile.EOF, mpv.MpvEventEndFile.ERROR):
+                return
+            if self.is_playing:
+                self.is_playing = False
+                if self.end_callback:
+                    self.end_callback()
+        self._end_file_handler = _on_end_file
 
-            # Stop observing idle-active to prevent further triggers 
-            self.unobserve_property('idle-active', self._on_idle_active)
+    def replay_current(self):
+        if not self.current_link:
+            return False
+        try:
+            self.stop()
+            self.is_playing = True
+            if self.current_stream_url:
+                self.play(self.current_stream_url)
+                self.add_to_recent_history(self.current_title, self.current_link)
+            else:
+                self.play_stream(self.current_link)
+            return True
+        except Exception as e:
+            print(f"Error replaying stream: {e}")
+            return False
 
-            if self.end_callback: 
-                self.end_callback()
+    def stop(self, keep_playlist=False):
+        super().stop(keep_playlist=keep_playlist)
+        self.is_playing = False
 
     def set_output_device(self):
         """Sets the output device based on the config file index."""

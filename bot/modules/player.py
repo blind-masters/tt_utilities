@@ -3,6 +3,7 @@ import os
 import yt_dlp
 import threading
 import time
+import random
 
 class PlayerCog:
     """
@@ -16,6 +17,15 @@ class PlayerCog:
         self.upload_timers = {}
         self.loading_new_track = False        
         self.player.end_callback = self.on_playback_end
+        self.playback_mode = "tl"
+        self.random_pool = []
+        self.mode_labels = {
+            "st": self._("single track"),
+            "rt": self._("repeat single track"),
+            "tl": self._("track list"),
+            "rtl": self._("repeat track list"),
+            "rnd": self._("random"),
+        }
 
     def register(self, command_handler):
         """Registers all the player commands with the command handler."""
@@ -25,6 +35,7 @@ class PlayerCog:
         command_handler.register_command('b', self.handle_previous_track_command, help_text=self._("Plays the previous track in the search results."))
         command_handler.register_command('v', self.handle_change_volume_command, help_text=self._("Changes playback volume. Without arguments, shows the current volume. Usage: /v <volume (Optional)>"))
         command_handler.register_command('sp', self.handle_speed_command, help_text=self._("Changes playback speed. Usage: /sp + or /sp - or /sp <value>. Without arguments, shows the current speed."))
+        command_handler.register_command('m', self.handle_mode_command, help_text=self._("Shows or changes playback mode. Usage: /m or /m <mode>"))
         command_handler.register_command('gl', self.handle_get_link_command, help_text=self._("Gets the link of the currently playing track."))
         command_handler.register_command('d', self.handle_get_duration_command, help_text=self._("Shows the duration of the current track."))
         command_handler.register_command('r', self.handle_history_command, help_text=self._("Shows recent tracks or plays from history. Usage: /r [index]. When used without arguments, shows a history of the recent tracks."))
@@ -63,6 +74,73 @@ class PlayerCog:
             return
         self.bot.privateMessage(user_id, private_message)
 
+    def _announce_autoplay(self, title):
+        if self.bot.playback_config.get("send_channel_messages", True):
+            self.bot.send_message(self._("Auto playing: {title}").format(title=title))
+
+    def _reset_random_pool(self):
+        self.random_pool = []
+
+    def _init_random_pool(self):
+        count = len(self.player.search_results) if self.player.search_results else 0
+        if count <= 0:
+            self.random_pool = []
+            return
+        self.random_pool = list(range(count))
+        current_index = self.player.current_search_index
+        if 0 <= current_index < count and current_index in self.random_pool and count > 1:
+            self.random_pool.remove(current_index)
+
+    def _next_random_index(self):
+        count = len(self.player.search_results) if self.player.search_results else 0
+        if count <= 0:
+            return None
+        if not self.random_pool:
+            self._init_random_pool()
+        if not self.random_pool:
+            return None
+        index = random.choice(self.random_pool)
+        self.random_pool.remove(index)
+        return index
+
+    def _prefetch_next_in_list(self):
+        if not self.player.search_results:
+            return
+        if self.playback_mode not in ("tl", "rtl"):
+            return
+        count = len(self.player.search_results)
+        next_index = self.player.current_search_index + 1
+        if next_index >= count:
+            if self.playback_mode == "rtl":
+                next_index = 0
+            else:
+                return
+        next_link = self.player.search_results[next_index].get('link')
+        if next_link:
+            self.bot.io_pool.submit(self.player.prefetch_stream_info, next_link)
+
+    def _play_index(self, index, announce_autoplay=False, user_id=None):
+        if not self.player.search_results:
+            return
+        if index < 0 or index >= len(self.player.search_results):
+            return
+        self.loading_new_track = True
+        self.player.stop()
+        self.player.current_search_index = index
+        if index in self.random_pool:
+            self.random_pool.remove(index)
+        next_video = self.player.search_results[index]
+        self.player.current_link = next_video['link']
+        self.bot.enableVoiceTransmission(True)
+        self.player.play_stream(next_video['link'])
+        if announce_autoplay:
+            self._announce_autoplay(next_video.get('title') or self.player.current_title)
+        elif user_id is not None:
+            self.bot.privateMessage(user_id, self._("Playing: {title}").format(title=next_video.get('title') or self.player.current_title))
+        self.bot.doChangeStatus(ttstr(self.bot.bot_config['gender']), ttstr(self._("Playing: {title}").format(title=self.player.current_title)))
+        self.loading_new_track = False
+        self._prefetch_next_in_list()
+
     def handle_play_url_command(self, textmessage, *args):
         if not self._is_in_same_channel(textmessage.nFromUserID):
             return
@@ -70,6 +148,11 @@ class PlayerCog:
         if not args:
             self.bot.privateMessage(textmessage.nFromUserID, self._("Invalid command. Usage: /u <link>"))
             return
+
+        self.player.search_results = []
+        self.player.current_search_index = 0
+        self._reset_random_pool()
+        self.player.clear_prefetch_cache()
 
         link = " ".join(args)
         self.player.current_link = link
@@ -79,9 +162,9 @@ class PlayerCog:
         self._announce(
             self._("{nickname} requested playing from a URL").format(nickname=user_nickname),
             textmessage.nFromUserID,
-            self._("Playing: {title}").format(title=self.player.media_title),
+            self._("Playing: {title}").format(title=self.player.current_title),
         )
-        self.bot.doChangeStatus(ttstr(self.bot.bot_config['gender']), ttstr(self._("Playing: {title}").format(title=self.player.media_title)))
+        self.bot.doChangeStatus(ttstr(self.bot.bot_config['gender']), ttstr(self._("Playing: {title}").format(title=self.player.current_title)))
 
     def handle_play_search_or_pause_command(self, textmessage, *args):
         if not self._is_in_same_channel(textmessage.nFromUserID):
@@ -101,8 +184,10 @@ class PlayerCog:
         """Task to be run in the thread pool for searching and playing."""
         results = self.player.search_youtube(query)
         if results:
+            self.player.clear_prefetch_cache()
             self.player.search_results = results
             self.player.current_search_index = 0
+            self._init_random_pool()
             first_video = results[0]
             self.player.current_link = first_video['link']
             self.bot.enableVoiceTransmission(True)
@@ -113,7 +198,8 @@ class PlayerCog:
                 user_id,
                 self._("Playing: {title}").format(title=first_video['title']),
             )
-            self.bot.doChangeStatus(ttstr(self.bot.bot_config['gender']), ttstr(self._("Playing: {title}").format(title=self.player.media_title)))
+            self.bot.doChangeStatus(ttstr(self.bot.bot_config['gender']), ttstr(self._("Playing: {title}").format(title=self.player.current_title)))
+            self._prefetch_next_in_list()
         else:
             self.bot.privateMessage(user_id, self._("No results found for '{query}'.").format(query=query))
 
@@ -121,7 +207,7 @@ class PlayerCog:
         if not self._is_in_same_channel(textmessage.nFromUserID):
             return
             
-        title = self.player.media_title
+        title = self.player.current_title
         if self.player.is_playing and not self.player.pause:
             self.player.pause_stream()
             self.bot.enableVoiceTransmission(False)
@@ -175,16 +261,8 @@ class PlayerCog:
                 return
 
             if self.player.current_search_index < len(self.player.search_results) - 1:
-                self.loading_new_track = True
-                self.player.stop()
-                self.player.current_search_index += 1
-                next_video = self.player.search_results[self.player.current_search_index]
-                self.player.current_link = next_video['link']
-                self.bot.enableVoiceTransmission(True)
-                self.player.play_stream(next_video['link'])
-                self.bot.privateMessage(textmessage.nFromUserID, self._("Playing: {title}").format(title=next_video['title']))
-                self.bot.doChangeStatus(ttstr(self.bot.bot_config['gender']), ttstr(self._("Playing: {title}").format(title=self.player.media_title)))
-                self.loading_new_track = False
+                next_index = self.player.current_search_index + 1
+                self._play_index(next_index, user_id=textmessage.nFromUserID)
             else:
                 self.bot.privateMessage(textmessage.nFromUserID, self._("You've reached the end of the search results."))
         
@@ -200,16 +278,8 @@ class PlayerCog:
                 return
 
             if self.player.current_search_index > 0:
-                self.loading_new_track = True
-                self.player.stop()
-                self.player.current_search_index -= 1
-                prev_video = self.player.search_results[self.player.current_search_index]
-                self.player.current_link = prev_video['link']
-                self.bot.enableVoiceTransmission(True)
-                self.player.play_stream(prev_video['link'])
-                self.bot.privateMessage(textmessage.nFromUserID, self._("Playing: {title}").format(title=prev_video['title']))
-                self.bot.doChangeStatus(ttstr(self.bot.bot_config['gender']), ttstr(self._("Playing: {title}").format(title=self.player.media_title)))
-                self.loading_new_track = False
+                prev_index = self.player.current_search_index - 1
+                self._play_index(prev_index, user_id=textmessage.nFromUserID)
             else:
                 self.bot.privateMessage(textmessage.nFromUserID, self._("You are at the beginning of the search results."))
 
@@ -224,6 +294,8 @@ class PlayerCog:
             self.player.current_link = None
             self.player.search_results = {}
             self.player.current_search_index = 0
+            self._reset_random_pool()
+            self.player.clear_prefetch_cache()
             self.bot.enableVoiceTransmission(False)
             user_nickname = ttstr(self.bot.getUser(textmessage.nFromUserID).szNickname)
             self._announce(
@@ -255,7 +327,7 @@ class PlayerCog:
                 self._announce(
                     self._("{name} has changed the volume to {volume}").format(name=user_nickname, volume=volume),
                     textmessage.nFromUserID,
-                    self._("Volume: {volume}").format(volume=volume),
+                    self._("Volume set to {volume}").format(volume=volume),
                 )
         except (ValueError, IndexError):
             self.bot.privateMessage(textmessage.nFromUserID, self._("Invalid command. Usage: /v [volume_level]"))
@@ -294,15 +366,81 @@ class PlayerCog:
         self._announce(
             self._("{name} set speed to {speed}").format(name=user_nickname, speed=round(new_speed, 2)),
             textmessage.nFromUserID,
-            self._("Speed: {speed}").format(speed=round(new_speed, 2)),
+            self._("Speed set to {speed}").format(speed=round(new_speed, 2)),
         )
+
+    def handle_mode_command(self, textmessage, *args):
+        user_id = textmessage.nFromUserID
+        if not args:
+            current_label = self.mode_labels.get(self.playback_mode, self.playback_mode)
+            lines = [
+                self._("Current mode is {label} ({mode})").format(label=current_label, mode=self.playback_mode),
+                self._("Available modes:"),
+                self._("single track (st)"),
+                self._("repeat single track (rt)"),
+                self._("track list (tl)"),
+                self._("repeat track list (rtl)"),
+                self._("random (rnd)"),
+            ]
+            self.bot.privateMessage(user_id, "\n".join(lines))
+            return
+
+        mode = args[0].strip().lower()
+        if mode not in self.mode_labels:
+            self.bot.privateMessage(user_id, self._("Invalid mode. Use /m to see available modes."))
+            return
+
+        self.playback_mode = mode
+        if mode == "rnd":
+            self._init_random_pool()
+        label = self.mode_labels.get(mode, mode)
+        self.bot.privateMessage(user_id, self._("Playback mode changed to {label}.").format(label=label))
 
     def on_playback_end(self):
         """Callback function to be called when playback ends."""
         if self.loading_new_track:
             return
 
-        self.bot.enableVoiceTransmission(False)  
+        def handle_end():
+            mode = self.playback_mode
+            if mode == "rt":
+                if self.player.current_link:
+                    self.loading_new_track = True
+                    self.bot.enableVoiceTransmission(True)
+                    if self.player.replay_current():
+                        self.bot.doChangeStatus(
+                            ttstr(self.bot.bot_config['gender']),
+                            ttstr(self._("Playing: {title}").format(title=self.player.current_title)),
+                        )
+                    else:
+                        self._finish_playback()
+                    self.loading_new_track = False
+                    return
+
+            if mode in ("tl", "rtl", "rnd"):
+                if not self.player.search_results:
+                    self._finish_playback()
+                    return
+                next_index = None
+                if mode == "rnd":
+                    next_index = self._next_random_index()
+                else:
+                    if self.player.current_search_index < len(self.player.search_results) - 1:
+                        next_index = self.player.current_search_index + 1
+                    elif mode == "rtl":
+                        next_index = 0
+                if next_index is None:
+                    self._finish_playback()
+                    return
+                self._play_index(next_index, announce_autoplay=True)
+                return
+
+            self._finish_playback()
+
+        self.bot.io_pool.submit(handle_end)
+
+    def _finish_playback(self):
+        self.bot.enableVoiceTransmission(False)
         status_msg = self.bot.bot_config.get('status_message', "")
         self.bot.doChangeStatus(ttstr(self.bot.bot_config['gender']), ttstr(status_msg))
 
@@ -346,16 +484,20 @@ class PlayerCog:
 
         try:
             index = int(args[0])
+            self.player.search_results = {}
+            self.player.current_search_index = 0
+            self._reset_random_pool()
+            self.player.clear_prefetch_cache()
             self.bot.enableVoiceTransmission(True)
             result_message = self.player.play_from_history(index)
             if "Playing" in result_message:
                 user_nickname = ttstr(self.bot.getUser(textmessage.nFromUserID).szNickname)
                 self._announce(
-                    self._("{nickname} requested to play {title} from history").format(nickname=user_nickname, title=self.player.media_title),
+                    self._("{nickname} requested to play {title} from history").format(nickname=user_nickname, title=self.player.current_title),
                     textmessage.nFromUserID,
-                    self._("Playing: {title}").format(title=self.player.media_title),
+                    self._("Playing: {title}").format(title=self.player.current_title),
                 )
-                self.bot.doChangeStatus(ttstr(self.bot.bot_config['gender']), ttstr(self._("Playing: {title}").format(title=self.player.media_title)))
+                self.bot.doChangeStatus(ttstr(self.bot.bot_config['gender']), ttstr(self._("Playing: {title}").format(title=self.player.current_title)))
             else:
                 self.bot.privateMessage(textmessage.nFromUserID, result_message)
         except (ValueError, IndexError):
