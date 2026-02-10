@@ -1,0 +1,18 @@
+[Unit]
+Description= TTUtilities bot for teamtalk
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/root/TTUtilities
+ExecStart=/usr/bin/python3 /root/TTUtilities/TTUtilities.py
+Restart=on-failure
+Environment="CONFIG_FILE=/root/TTUtilities/config.ini"
+StandardOutput=syslog
+StandardError=syslog
+
+
+[Install]
+WantedBy=multi-user.target

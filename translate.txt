@@ -1,0 +1,1 @@
+xgettext -d messages -o locales/messages.pot main.py bot/gui.py bot/player.py bot/config_handler.py bot/command_handler.py bot/tt_utilities.py bot/user_manager.py bot/utils.py bot/modules/admin.py bot/modules/general.py bot/modules/jail.py bot/modules/player.py bot/modules/translator.py bot/modules/tts.py --from-code UTF-8
