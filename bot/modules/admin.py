@@ -34,6 +34,7 @@ class AdminCog:
         command_handler.register_command('cs', self.handle_change_status, admin_only=True, help_text=self._("Changes the bot's status message. Usage: /cs <new_status>"))
         command_handler.register_command('cg', self.handle_change_gender, admin_only=True, help_text=self._("Changes the bot's gender. Usage: /cg <m|f|n>. send /cg without arguments for more details."))
         command_handler.register_command('new', self.handle_new_account_command, admin_only=True, help_text=self._("Creates a new user account. Usage: /new <user> <pass> [rights]. the rights is a list of user rights separated by spaces for each number."))
+        command_handler.register_command('cm', self.handle_channel_messages_command, admin_only=True, help_text=self._("Toggle playback channel messages on or off. Usage: /cm"))
         command_handler.register_command('l', self.handle_lock_command, admin_only=True, help_text=self._("Locks or unlocks bot commands (admins only). Usage: /l"))
         command_handler.register_command('shutdown', self.handle_shutdown_command, admin_only=True, help_text=self._("Shuts down the bot."))
         command_handler.register_command('sd', self.handle_shutdown_command, admin_only=True, help_text=self._("Alias for /shutdown."))
@@ -338,7 +339,14 @@ class AdminCog:
             
     def save_bot_config(self, textmessage, *args):
         self.bot.config_handler.save_bot_config(self.bot.bot_config)
+        self.bot.config_handler.save_playback_config(self.bot.playback_config)
         self.bot.privateMessage(textmessage.nFromUserID, self._("Bot configuration saved."))
+
+    def handle_channel_messages_command(self, textmessage, *args):
+        current = self.bot.playback_config.get("send_channel_messages", True)
+        self.bot.playback_config["send_channel_messages"] = not current
+        state = self._("enabled") if self.bot.playback_config["send_channel_messages"] else self._("disabled")
+        self.bot.privateMessage(textmessage.nFromUserID, self._("Playback channel messages are now {state}.").format(state=state))
 
     def handle_new_account_command(self, textmessage, *args):
         try:

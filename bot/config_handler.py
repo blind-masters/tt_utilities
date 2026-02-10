@@ -32,7 +32,7 @@ class ConfigHandler:
             # Each dict represents a single configuration key.
             # 'section' and 'key' are mandatory.
             # 'prompt' and 'help_text' are for user interaction.
-            # 'type' determines the kind of input (text, int, bool, choice, device, password).
+            # 'type' determines the kind of input (text, int, float, bool, choice, device, password).
             # 'default' provides a fallback value.
             # 'required' ensures a value must be present.
 
@@ -62,6 +62,9 @@ class ConfigHandler:
             {'section': 'playback', 'key': 'seek_step', 'type': 'int', 'prompt': self._("Seek Step (seconds)"), 'help_text': self._("Default number of seconds to seek forward/backward in media playback."), 'default': 5},
             {'section': 'playback', 'key': 'default_volume', 'type': 'int', 'prompt': self._("Default Playback Volume"), 'help_text': self._("The initial volume for media playback (0-100)."), 'default': 80},
             {'section': 'playback', 'key': 'max_volume', 'type': 'int', 'prompt': self._("Maximum Playback Volume"), 'help_text': self._("The highest volume users can set (e.g., 100)."), 'default': 100},
+            {'section': 'playback', 'key': 'send_channel_messages', 'type': 'bool', 'prompt': self._("Send Playback Messages to Channel?"), 'help_text': self._("Announce playback actions (play/pause/stop/volume) in the channel."), 'default': True},
+            {'section': 'playback', 'key': 'channel_messages_mode', 'type': 'choice', 'prompt': self._("If Disabled, Send Playback Messages By"), 'help_text': self._("Choose whether to send playback messages privately or stay silent when channel announcements are disabled."), 'options': {'Private messages': 'private', 'Silent': 'silent'}, 'default': 'Private messages'},
+            {'section': 'playback', 'key': 'volume_fading', 'type': 'float', 'prompt': self._("Volume Fading (seconds)"), 'help_text': self._("Fade audio when seeking or changing volume. Set to 0 to disable."), 'default': 0.0},
             {'section': 'playback', 'key': 'cookiefile_path', 'type': 'text', 'prompt': self._("Cookies File Path"), 'help_text': self._("Optional path to a cookies file (e.g., cookies.txt) for yt-dlp to access private or restricted videos.")},
 
             {'type': 'header', 'text': self._("Moderation and Security")},
@@ -271,6 +274,15 @@ class ConfigHandler:
             except ValueError:
                 print(self._("Invalid input. Please enter a whole number."))
 
+    def _ask_float(self, prompt, help_text, default=None):
+        """Asks for a float input."""
+        while True:
+            val_str = self._ask_text(prompt, help_text, default=str(default) if default is not None else None)
+            try:
+                return float(val_str)
+            except ValueError:
+                print(self._("Invalid input. Please enter a number."))
+
     def _ask_bool(self, prompt, help_text, default=True):
         """Asks a yes/no question."""
         while True:
@@ -368,6 +380,8 @@ class ConfigHandler:
                 value = self._ask_password(prompt, help_text)
             elif item_type == 'int':
                 value = self._ask_int(prompt, help_text, default)
+            elif item_type == 'float':
+                value = self._ask_float(prompt, help_text, default)
             elif item_type == 'bool':
                 value = self._ask_bool(prompt, help_text, default)
             elif item_type == 'choice':
@@ -462,11 +476,33 @@ class ConfigHandler:
                 "seek_step": playback_section.getint("seek_step", 5),
                 "default_volume": playback_section.getint("default_volume", 80),
                 "max_volume": playback_section.getint("max_volume", 100),
+                "send_channel_messages": playback_section.getboolean("send_channel_messages", True),
+                "channel_messages_mode": playback_section.get("channel_messages_mode", "private"),
+                "volume_fading": playback_section.getfloat("volume_fading", fallback=0.0),
                 "cookiefile_path": playback_section.get("cookiefile_path", fallback=None),
             }
         except (configparser.Error, KeyError, ValueError) as e:
             print(self._("Config file error in [playback] section: {e}. Please delete config.ini and run again.").format(e=e))
             sys.exit(1)
+
+    def save_playback_config(self, playback_config):
+        """Saves the playback configuration section to the config file."""
+        try:
+            self.config["playback"] = {
+                "input_device": playback_config.get("input_device"),
+                "output_device": playback_config.get("output_device"),
+                "seek_step": playback_config.get("seek_step", 5),
+                "default_volume": playback_config.get("default_volume", 80),
+                "max_volume": playback_config.get("max_volume", 100),
+                "send_channel_messages": str(playback_config.get("send_channel_messages", True)),
+                "channel_messages_mode": playback_config.get("channel_messages_mode", "private"),
+                "volume_fading": playback_config.get("volume_fading", 0.0),
+                "cookiefile_path": playback_config.get("cookiefile_path") or "",
+            }
+            with open(self.config_file, "w", encoding="utf-8") as configfile:
+                self.config.write(configfile)
+        except (configparser.Error, KeyError) as e:
+            print(self._(f"Error saving playback config: {e}"))
 
     def get_telegram_config(self):
         try:

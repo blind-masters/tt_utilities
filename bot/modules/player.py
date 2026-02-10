@@ -24,6 +24,7 @@ class PlayerCog:
         command_handler.register_command('n', self.handle_next_track_command, help_text=self._("Plays the next track in the search results."))
         command_handler.register_command('b', self.handle_previous_track_command, help_text=self._("Plays the previous track in the search results."))
         command_handler.register_command('v', self.handle_change_volume_command, help_text=self._("Changes playback volume. Without arguments, shows the current volume. Usage: /v <volume (Optional)>"))
+        command_handler.register_command('sp', self.handle_speed_command, help_text=self._("Changes playback speed. Usage: /sp + or /sp - or /sp <value>. Without arguments, shows the current speed."))
         command_handler.register_command('gl', self.handle_get_link_command, help_text=self._("Gets the link of the currently playing track."))
         command_handler.register_command('d', self.handle_get_duration_command, help_text=self._("Shows the duration of the current track."))
         command_handler.register_command('r', self.handle_history_command, help_text=self._("Shows recent tracks or plays from history. Usage: /r [index]. When used without arguments, shows a history of the recent tracks."))
@@ -52,6 +53,16 @@ class PlayerCog:
             return False
         return True
 
+    def _announce(self, channel_message, user_id=None, private_message=None):
+        if self.bot.playback_config.get("send_channel_messages", True):
+            self.bot.send_message(channel_message)
+            return
+        if self.bot.playback_config.get("channel_messages_mode", "private") != "private":
+            return
+        if user_id is None or not private_message:
+            return
+        self.bot.privateMessage(user_id, private_message)
+
     def handle_play_url_command(self, textmessage, *args):
         if not self._is_in_same_channel(textmessage.nFromUserID):
             return
@@ -65,7 +76,11 @@ class PlayerCog:
         self.bot.enableVoiceTransmission(True)
         self.player.play_stream(link)
         user_nickname = ttstr(self.bot.getUser(textmessage.nFromUserID).szNickname)
-        self.bot.send_message(self._("{nickname} requested playing from a URL").format(nickname=user_nickname))
+        self._announce(
+            self._("{nickname} requested playing from a URL").format(nickname=user_nickname),
+            textmessage.nFromUserID,
+            self._("Playing: {title}").format(title=self.player.media_title),
+        )
         self.bot.doChangeStatus(ttstr(self.bot.bot_config['gender']), ttstr(self._("Playing: {title}").format(title=self.player.media_title)))
 
     def handle_play_search_or_pause_command(self, textmessage, *args):
@@ -93,10 +108,14 @@ class PlayerCog:
             self.bot.enableVoiceTransmission(True)
             self.player.play_stream(first_video['link'])
             user_nickname = ttstr(self.bot.getUser(user_id).szNickname)
-            self.bot.send_message(self._("{nickname} requested to play: {title}").format(nickname=user_nickname, title=first_video['title']))
+            self._announce(
+                self._("{nickname} requested to play: {title}").format(nickname=user_nickname, title=first_video['title']),
+                user_id,
+                self._("Playing: {title}").format(title=first_video['title']),
+            )
             self.bot.doChangeStatus(ttstr(self.bot.bot_config['gender']), ttstr(self._("Playing: {title}").format(title=self.player.media_title)))
         else:
-            self.bot.send_message(self._("No results found for '{query}'.").format(query=query))
+            self.bot.privateMessage(user_id, self._("No results found for '{query}'.").format(query=query))
 
     def handle_pause_command(self, textmessage, *args):
         if not self._is_in_same_channel(textmessage.nFromUserID):
@@ -107,7 +126,11 @@ class PlayerCog:
             self.player.pause_stream()
             self.bot.enableVoiceTransmission(False)
             user_nickname = ttstr(self.bot.getUser(textmessage.nFromUserID).szNickname)
-            self.bot.send_message(self._("{nickname} paused the playback").format(nickname=user_nickname))
+            self._announce(
+                self._("{nickname} paused the playback").format(nickname=user_nickname),
+                textmessage.nFromUserID,
+                self._("Paused: {title}").format(title=title),
+            )
             self.bot.doChangeStatus(ttstr(self.bot.bot_config['gender']), ttstr(self._("Paused: {title}").format(title=title)))
         elif self.player.pause:
             self.player.pause = False
@@ -203,7 +226,11 @@ class PlayerCog:
             self.player.current_search_index = 0
             self.bot.enableVoiceTransmission(False)
             user_nickname = ttstr(self.bot.getUser(textmessage.nFromUserID).szNickname)
-            self.bot.send_message(self._("{nickname} stopped the playback").format(nickname=user_nickname))
+            self._announce(
+                self._("{nickname} stopped the playback").format(nickname=user_nickname),
+                textmessage.nFromUserID,
+                self._("Playback stopped."),
+            )
             status_msg = self.bot.bot_config.get('status_message', "")
             self.bot.doChangeStatus(ttstr(self.bot.bot_config['gender']), ttstr(status_msg))
         else:
@@ -223,11 +250,52 @@ class PlayerCog:
             if volume > max_volume:
                 self.bot.privateMessage(textmessage.nFromUserID, self._("Maximum allowed volume is {max_volume}").format(max_volume=max_volume))
             else:
-                self.player.volume = volume
+                self.player.set_volume(volume)
                 user_nickname = ttstr(self.bot.getUser(textmessage.nFromUserID).szNickname)
-                self.bot.send_message(self._("{name} has changed the volume to {volume}").format(name=user_nickname, volume=volume))
+                self._announce(
+                    self._("{name} has changed the volume to {volume}").format(name=user_nickname, volume=volume),
+                    textmessage.nFromUserID,
+                    self._("Volume: {volume}").format(volume=volume),
+                )
         except (ValueError, IndexError):
             self.bot.privateMessage(textmessage.nFromUserID, self._("Invalid command. Usage: /v [volume_level]"))
+
+    def handle_speed_command(self, textmessage, *args):
+        if not self._is_in_same_channel(textmessage.nFromUserID):
+            return
+
+        try:
+            current_speed = float(getattr(self.player, "speed", 1.0))
+        except (TypeError, ValueError):
+            current_speed = 1.0
+
+        if not args:
+            self.bot.privateMessage(textmessage.nFromUserID, self._("Current speed: {speed}").format(speed=round(current_speed, 2)))
+            return
+
+        arg = args[0].strip().lower()
+        if arg in ("+", "plus"):
+            new_speed = current_speed + 0.1
+        elif arg in ("-", "minus"):
+            new_speed = max(0.1, current_speed - 0.1)
+        else:
+            try:
+                new_speed = float(arg)
+            except ValueError:
+                self.bot.privateMessage(textmessage.nFromUserID, self._("Invalid command. Usage: /sp + or /sp - or /sp <value>"))
+                return
+
+        if new_speed <= 0:
+            self.bot.privateMessage(textmessage.nFromUserID, self._("Speed must be greater than 0."))
+            return
+
+        self.player.speed = new_speed
+        user_nickname = ttstr(self.bot.getUser(textmessage.nFromUserID).szNickname)
+        self._announce(
+            self._("{name} set speed to {speed}").format(name=user_nickname, speed=round(new_speed, 2)),
+            textmessage.nFromUserID,
+            self._("Speed: {speed}").format(speed=round(new_speed, 2)),
+        )
 
     def on_playback_end(self):
         """Callback function to be called when playback ends."""
@@ -282,7 +350,11 @@ class PlayerCog:
             result_message = self.player.play_from_history(index)
             if "Playing" in result_message:
                 user_nickname = ttstr(self.bot.getUser(textmessage.nFromUserID).szNickname)
-                self.bot.send_message(self._("{nickname} requested to play {title} from history").format(nickname=user_nickname, title=self.player.media_title))
+                self._announce(
+                    self._("{nickname} requested to play {title} from history").format(nickname=user_nickname, title=self.player.media_title),
+                    textmessage.nFromUserID,
+                    self._("Playing: {title}").format(title=self.player.media_title),
+                )
                 self.bot.doChangeStatus(ttstr(self.bot.bot_config['gender']), ttstr(self._("Playing: {title}").format(title=self.player.media_title)))
             else:
                 self.bot.privateMessage(textmessage.nFromUserID, result_message)

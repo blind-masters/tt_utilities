@@ -151,7 +151,7 @@ class ConfigWizard(wx.Frame):
                 self.values[unique_key] = control.GetValue()
             elif field['type'] == 'radio':
                 self.values[unique_key] = control.GetStringSelection()
-            elif field['type'] in ('text', 'password', 'int'):
+            elif field['type'] in ('text', 'password', 'int', 'float'):
                 val_str = control.GetValue()
                 if field.get('required') and not val_str:
                     wx.MessageBox(self._("'{}' is a required field.").format(self._(field['prompt'])), self._("Input Error"), wx.OK | wx.ICON_ERROR)
@@ -209,7 +209,7 @@ class ConfigWizard(wx.Frame):
             label = wx.StaticText(parent, label=self._(field['prompt']) + ":", style=wx.ALIGN_RIGHT)
             sizer.Add(label, 1, wx.ALL | wx.ALIGN_CENTER_VERTICAL, 5)
 
-            if field_type in ('text', 'int'):
+            if field_type in ('text', 'int', 'float'):
                 control = wx.TextCtrl(parent, value=str(default))
             elif field_type == 'password':
                 control = wx.TextCtrl(parent, value=str(default), style=wx.TE_PASSWORD)
@@ -321,7 +321,7 @@ class MissingConfigDialog(wx.Dialog):
 
             if item['type'] == 'bool':
                 values[unique_key] = control.GetValue()
-            elif item['type'] in ('text', 'password', 'int'):
+            elif item['type'] in ('text', 'password', 'int', 'float'):
                 val_str = control.GetValue()
                 if item.get('required') and not val_str:
                     wx.MessageBox(self._("'{}' is a required field.").format(self._(item['prompt'])), self._("Input Error"), wx.OK | wx.ICON_ERROR)

@@ -5,7 +5,6 @@ import asyncio
 import langdetect
 import random
 from gtts import gTTS
-import TeamTalk5 as teamtalk
 import edge_tts
 
 

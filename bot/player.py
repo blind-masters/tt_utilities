@@ -11,6 +11,7 @@ class Player(mpv.MPV):
         self.playback_config = self.config_handler.get_playback_config()
         self.is_playing=False
         self.volume=self.playback_config['default_volume']
+        self.volume_fading = float(self.playback_config.get('volume_fading', 0) or 0)
         self.current_link=None
         self.search_results = {}
         self.current_search_index = 0
@@ -89,14 +90,57 @@ class Player(mpv.MPV):
         self.pause=True
 
     def seek_forward(self, amount):
-        self.seek(amount, reference="relative")
+        self._perform_with_fade(lambda: self.seek(amount, reference="relative"))
 
     def seek_back(self, amount):
         try:
             amount=-amount
-            self.seek(amount)
+            self._perform_with_fade(lambda: self.seek(amount))
         except:
             raise(ValueError)
+
+    def set_volume(self, volume):
+        try:
+            target = float(volume)
+        except (TypeError, ValueError):
+            target = volume
+        if self.volume_fading > 0:
+            self._fade_volume(float(self.volume), float(target), self.volume_fading)
+        else:
+            self.volume = target
+
+    def _perform_with_fade(self, action):
+        duration = self.volume_fading
+        if duration <= 0:
+            action()
+            return
+        try:
+            current = float(self.volume)
+        except (TypeError, ValueError):
+            current = None
+        if current is None:
+            action()
+            return
+        fade_target = max(1.0, current * 0.5)
+        half = duration / 2.0
+        if half <= 0:
+            action()
+            return
+        self._fade_volume(current, fade_target, half)
+        action()
+        self._fade_volume(fade_target, current, half)
+
+    def _fade_volume(self, start, end, duration):
+        if duration <= 0:
+            self.volume = end
+            return
+        steps = max(1, int(duration * 10))
+        step_time = duration / steps
+        for i in range(1, steps + 1):
+            value = start + (end - start) * (i / steps)
+            self.volume = value
+            time.sleep(step_time)
+        self.volume = end
 
     def _on_idle_active(self, name, value):
         """Callback function for 'idle-active' property change."""
