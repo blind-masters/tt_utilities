@@ -74,7 +74,7 @@ def do_download_and_extract() -> None:
     page = bs4.BeautifulSoup(r.text, features="html.parser")
     try:
         versions = page.find_all("li")
-        version_link = [i for i in versions if "5.15" in i.text][-1].a
+        version_link = [i for i in versions if "5.18" in i.text][-1].a
         version = version_link.get("href").strip('/')
     except (AttributeError, IndexError):
         print("Could not find a suitable SDK version (5.15x) on the page.", file=sys.stderr)

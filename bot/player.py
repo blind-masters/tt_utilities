@@ -1,6 +1,7 @@
 import mpv
 import time
-from youtubesearchpython import VideosSearch
+import asyncio
+from py_yt import VideosSearch
 import yt_dlp
 
 class Player(mpv.MPV):
@@ -32,18 +33,41 @@ class Player(mpv.MPV):
         Searches YouTube and returns the results.
         This is a blocking network call and should be run in a thread.
         """
-        search = VideosSearch(query, limit=50)
-        results = []
         try:
-            search_result_data = search.result()['result']
-            for video in search_result_data:
-                results.append({
-                    'title': video['title'],
-                    'link': video['link']
-                })
+            return self._run_search(query)
         except Exception as e:
             print(f"Error during YouTube search: {e}")
             return []
+
+    def _run_search(self, query):
+        try:
+            return asyncio.run(self._search_youtube_async(query))
+        except RuntimeError:
+            loop = asyncio.new_event_loop()
+            try:
+                return loop.run_until_complete(self._search_youtube_async(query))
+            finally:
+                loop.close()
+
+    async def _search_youtube_async(self, query):
+        search = VideosSearch(query, limit=50)
+        results = []
+        search_result_data = await search.next()
+        for video in search_result_data.get('result', []):
+            title = video.get('title') or "Unknown title"
+            link = video.get('link')
+            if not link:
+                video_id = video.get('id')
+                uri = video.get('uri')
+                if video_id:
+                    link = f"https://www.youtube.com/watch?v={video_id}"
+                elif uri:
+                    link = f"https://www.youtube.com{uri}"
+            if link:
+                results.append({
+                    'title': title,
+                    'link': link
+                })
         return results
 
     def play_stream(self, link):

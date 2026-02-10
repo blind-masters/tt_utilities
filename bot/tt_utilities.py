@@ -44,6 +44,7 @@ class TTUtilities(TeamTalk):
         self.quick_task_pool = None
         self.player = Player(self.config_handler, cookiefile=self.cookiefile)
         self.command_handler = CommandHandler(self, prefix='/')
+        self.commands_locked = False
         self.initialize_connection()
         self._register_cogs()
 

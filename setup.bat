@@ -15,7 +15,7 @@ PAUSE
 CLS
 
 :: Step 1: Check for Python
-ECHO Step 1 of 5: Checking for Python installation...
+ECHO Step 1 of 6: Checking for Python installation...
 CALL :FindPython
 
 IF DEFINED PYTHON_EXE (
@@ -49,7 +49,7 @@ ECHO.
 
 
 :: Step 2: Check for 7-Zip
-ECHO Step 2 of 5: Checking for 7-Zip installation...
+ECHO Step 2 of 6: Checking for 7-Zip installation...
 where 7z.exe >nul 2>nul
 IF %ERRORLEVEL% EQU 0 (
     ECHO 7-Zip is already installed and found in your system's PATH.
@@ -73,7 +73,7 @@ IF %ERRORLEVEL% EQU 0 (
 ECHO.
 
 :: Step 3: Install Python Requirements
-ECHO Step 3 of 5: Installing Python libraries...
+ECHO Step 3 of 6: Installing Python libraries...
 IF NOT EXIST "requirements.txt" (
     ECHO Error: The 'requirements.txt' file was not found in the bot's directory.
     PAUSE
@@ -91,8 +91,19 @@ IF %ERRORLEVEL% NEQ 0 (
 ECHO All required Python libraries have been installed successfully.
 ECHO.
 
-:: Step 3: Download mpv.dll
-ECHO Step 4 of 5: Checking for audio components ^(mpv.dll^)...
+:: Step 4: Install Deno (required by yt-dlp for YouTube)
+ECHO Step 4 of 6: Checking for Deno installation...
+where deno >nul 2>nul
+IF %ERRORLEVEL% EQU 0 (
+    ECHO Deno is already installed and found in your system's PATH.
+) ELSE (
+    ECHO Deno was not found. Installing Deno...
+    powershell -NoProfile -ExecutionPolicy Bypass -Command "irm https://deno.land/install.ps1 | iex"
+)
+ECHO.
+
+:: Step 5: Download mpv.dll
+ECHO Step 5 of 6: Checking for audio components ^(mpv.dll^)...
 IF EXIST "mpv.dll" (
     ECHO The audio component ^(mpv.dll^) already exists. Skipping download.
 ) ELSE (
@@ -107,8 +118,8 @@ IF EXIST "mpv.dll" (
 )
 ECHO.
 
-:: Step 5: Download TeamTalk SDK
-ECHO Step 5 of 5: Configuring the TeamTalk SDK...
+:: Step 6: Download TeamTalk SDK
+ECHO Step 6 of 6: Configuring the TeamTalk SDK...
 IF NOT EXIST "downloader.py" (
     ECHO Error: The helper script for downloading TeamTalk SDK was not found. Please ensure it is in the same directory as this setup file.
     PAUSE

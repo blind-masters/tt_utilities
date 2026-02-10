@@ -1,11 +1,83 @@
 from TeamTalk5 import ttstr
+import TeamTalk5 as teamtalk
 import os
 import asyncio
 import langdetect
 import random
 from gtts import gTTS
 import TeamTalk5 as teamtalk
-from msspeech import MSSpeech
+import edge_tts
+
+
+class EdgeTTSWrapper:
+    def __init__(self):
+        self.voice = "en-US-JennyNeural"
+        self.rate = "+0%"
+        self.pitch = "+0Hz"
+        self.volume = "+0%"
+
+    async def get_voices_list(self):
+        voices = await edge_tts.list_voices()
+        normalized = []
+        for voice in voices:
+            normalized.append({
+                "FriendlyName": voice.get("FriendlyName") or voice.get("Name") or voice.get("ShortName"),
+                "ShortName": voice.get("ShortName") or voice.get("Name"),
+                "Locale": voice.get("Locale"),
+            })
+        return normalized
+
+    async def set_voice(self, voice_name):
+        if voice_name:
+            self.voice = voice_name
+
+    async def set_rate(self, rate):
+        self.rate = self._format_rate(rate)
+
+    async def set_pitch(self, pitch):
+        self.pitch = self._format_pitch(pitch)
+
+    async def set_volume(self, volume):
+        self.volume = self._format_volume(volume)
+
+    async def synthesize(self, text, filepath):
+        communicate = edge_tts.Communicate(
+            text,
+            voice=self.voice,
+            rate=self.rate,
+            pitch=self.pitch,
+            volume=self.volume,
+        )
+        await communicate.save(filepath)
+        return os.path.getsize(filepath) if os.path.exists(filepath) else 0
+
+    @staticmethod
+    def _format_rate(rate):
+        try:
+            rate_value = int(rate)
+        except (TypeError, ValueError):
+            rate_value = 0
+        rate_value = max(-100, min(100, rate_value))
+        return f"{rate_value:+d}%"
+
+    @staticmethod
+    def _format_pitch(pitch):
+        try:
+            pitch_value = int(pitch)
+        except (TypeError, ValueError):
+            pitch_value = 0
+        pitch_value = max(-100, min(100, pitch_value))
+        return f"{pitch_value:+d}Hz"
+
+    @staticmethod
+    def _format_volume(volume):
+        try:
+            volume_value = float(volume)
+        except (TypeError, ValueError):
+            volume_value = 1.0
+        volume_value = max(0.0, min(1.0, volume_value))
+        percent = int(round((volume_value - 1.0) * 100))
+        return f"{percent:+d}%"
 
 class TTSCog:
     """
@@ -14,7 +86,7 @@ class TTSCog:
     def __init__(self, bot):
         self.bot = bot
         self._ = bot._
-        self.speech_engine = MSSpeech()
+        self.speech_engine = EdgeTTSWrapper()
         self.user_speech_settings = {}
         self.speech_thread = None
         self.voice_thread = None
@@ -90,7 +162,7 @@ class TTSCog:
                 try:
                     detected_lang = langdetect.detect(text_to_speak)
                     voices = await self.speech_engine.get_voices_list()
-                    matching_voices = [v for v in voices if v["Locale"].lower().startswith(detected_lang)]
+                    matching_voices = [v for v in voices if (v.get("Locale") or "").lower().startswith(detected_lang)]
                     if matching_voices:
                         voice_name = random.choice(matching_voices)["ShortName"]
                         self.bot.privateMessage(user_id, self._("Using voice {voice_name} for {detected_lang}").format(voice_name=voice_name, detected_lang=detected_lang))
@@ -212,9 +284,10 @@ class TTSCog:
             
             found_voices = []
             for voice in voices:
-                if not lang_code or voice["Locale"].lower().startswith(lang_code):
+                locale = (voice.get("Locale") or "").lower()
+                if not lang_code or locale.startswith(lang_code):
                     found_voices.append(self._("Name: {voice_name}, ShortName: {short_name}, Locale: {locale}").format(
-                        voice_name=voice['FriendlyName'], short_name=voice['ShortName'], locale=voice['Locale']))
+                        voice_name=voice.get('FriendlyName'), short_name=voice.get('ShortName'), locale=voice.get('Locale')))
             
             if not found_voices:
                 self.bot.privateMessage(user_id, self._("No voices found for the specified language code."))

@@ -34,6 +34,7 @@ class AdminCog:
         command_handler.register_command('cs', self.handle_change_status, admin_only=True, help_text=self._("Changes the bot's status message. Usage: /cs <new_status>"))
         command_handler.register_command('cg', self.handle_change_gender, admin_only=True, help_text=self._("Changes the bot's gender. Usage: /cg <m|f|n>. send /cg without arguments for more details."))
         command_handler.register_command('new', self.handle_new_account_command, admin_only=True, help_text=self._("Creates a new user account. Usage: /new <user> <pass> [rights]. the rights is a list of user rights separated by spaces for each number."))
+        command_handler.register_command('l', self.handle_lock_command, admin_only=True, help_text=self._("Locks or unlocks bot commands (admins only). Usage: /l"))
         command_handler.register_command('shutdown', self.handle_shutdown_command, admin_only=True, help_text=self._("Shuts down the bot."))
         command_handler.register_command('sd', self.handle_shutdown_command, admin_only=True, help_text=self._("Alias for /shutdown."))
         command_handler.register_command('restart', self.handle_restart_command, admin_only=True, help_text=self._("Restarts the bot."))
@@ -50,6 +51,14 @@ class AdminCog:
         self.bot.privateMessage(textmessage.nFromUserID, self._("Restarting..."))
         print("\nRestart requested by admin command.")
         raise RestartSignal
+
+    def handle_lock_command(self, textmessage, *args):
+        """Toggles command lock so only admins can run commands."""
+        self.bot.commands_locked = not self.bot.commands_locked
+        if self.bot.commands_locked:
+            self.bot.privateMessage(textmessage.nFromUserID, self._("Commands locked. Only admins can use commands."))
+        else:
+            self.bot.privateMessage(textmessage.nFromUserID, self._("Commands unlocked. Commands available to everyone."))
 
     def handle_user_login_checks(self, user):
         """Handles all administrative checks when a user logs in."""

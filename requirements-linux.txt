@@ -6,9 +6,9 @@ wikipedia
 langdetect
 gtts
 deep_translator
-msspeech
-yt_dlp
-youtube-search-python
+edge-tts
+yt_dlp[default]
+py-yt-search
 mpv
 httpx==0.27.0
 beautifulsoup4

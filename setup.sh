@@ -38,7 +38,7 @@ main() {
     read -p "Press [Enter] to begin the setup..."
     clear
 
-    print_step "1 of 5" "Checking system dependencies..."
+    print_step "1 of 6" "Checking system dependencies..."
     if [ ! -f /etc/os-release ]; then
         print_error "Cannot determine Linux distribution. /etc/os-release not found."
     fi
@@ -58,7 +58,7 @@ main() {
         read -p "Press [Enter] to continue if they are installed, or Ctrl+C to exit."
     fi
 
-    print_step "2 of 5" "Installing Python libraries..."
+    print_step "2 of 6" "Installing Python libraries..."
     if [ ! -f "${REQUIREMENTS_FILE}" ]; then
         print_error "'${REQUIREMENTS_FILE}' not found."
     fi
@@ -68,7 +68,17 @@ main() {
     fi
     print_success "Python libraries installed successfully."
 
-    print_step "3 of 5" "Configuring the TeamTalk SDK..."
+    print_step "3 of 6" "Checking Deno installation..."
+    if command -v deno >/dev/null 2>&1; then
+        print_success "Deno is already installed and found in PATH."
+    else
+        echo "Deno not found. Installing Deno..."
+        if ! curl -fsSL https://deno.land/install.sh | sh; then
+            print_error "Failed to install Deno."
+        fi
+    fi
+
+    print_step "4 of 6" "Configuring the TeamTalk SDK..."
     if [ ! -f "${SDK_DOWNLOADER_SCRIPT}" ]; then
         print_error "SDK downloader script ('${SDK_DOWNLOADER_SCRIPT}') not found."
     fi
@@ -77,7 +87,7 @@ main() {
     fi
     print_success "TeamTalk SDK configured successfully."
 
-    print_step "4 of 5" "Configuring service installation..."
+    print_step "5 of 6" "Configuring service installation..."
     INSTALL_TYPE=""
     while [[ -z "$INSTALL_TYPE" ]]; do
         read -p "Install services system-wide or for the current user? [system/user]: " choice
@@ -88,7 +98,7 @@ main() {
         esac
     done
 
-    print_step "5 of 5" "Finalizing installation..."
+    print_step "6 of 6" "Finalizing installation..."
     if [ "$INSTALL_TYPE" == "user" ]; then
         SERVICE_DIR="$HOME/.config/systemd/user"
         SYSTEMCTL_CMD="systemctl --user"
