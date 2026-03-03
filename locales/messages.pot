@@ -1,0 +1,1818 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-09-17 03:04+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: bot/gui.py:22
+msgid "Server Address"
+msgstr ""
+
+#: bot/gui.py:23
+msgid "Server Port"
+msgstr ""
+
+#: bot/gui.py:24
+msgid "Encrypted server"
+msgstr ""
+
+#: bot/gui.py:25
+msgid "Bot Username"
+msgstr ""
+
+#: bot/gui.py:26
+msgid "Bot Password"
+msgstr ""
+
+#: bot/gui.py:29
+msgid "Bot Nickname"
+msgstr ""
+
+#: bot/gui.py:30
+msgid "Bot Client Name"
+msgstr ""
+
+#: bot/gui.py:31
+msgid "Bot Gender"
+msgstr ""
+
+#: bot/gui.py:31 bot/gui.py:375
+msgid "Male"
+msgstr ""
+
+#: bot/gui.py:31 bot/gui.py:377
+msgid "Female"
+msgstr ""
+
+#: bot/gui.py:31 bot/gui.py:379
+msgid "Neutral"
+msgstr ""
+
+#: bot/gui.py:32
+msgid "Default channel to join after login: "
+msgstr ""
+
+#: bot/gui.py:33
+msgid "Channel password"
+msgstr ""
+
+#: bot/gui.py:34
+msgid "Bot Status Message"
+msgstr ""
+
+#: bot/gui.py:35
+msgid "Enable VPN detection"
+msgstr ""
+
+#: bot/gui.py:36
+msgid "Automatically kick users with no name"
+msgstr ""
+
+#: bot/gui.py:37
+msgid "Default message that will be sent to users with no name when they login"
+msgstr ""
+
+#: bot/gui.py:38
+msgid ""
+"Enable intercepting channel messages for all users: Useful for detecting bad "
+"words in all channels as well as allowing some commands to work regardless "
+"of the bot's channel"
+msgstr ""
+
+#: bot/gui.py:39
+msgid "Jail Users (comma-separated)"
+msgstr ""
+
+#: bot/gui.py:40
+msgid "Jail Nicknames (comma-separated)"
+msgstr ""
+
+#: bot/gui.py:41
+msgid "Jail Channel Path"
+msgstr ""
+
+#: bot/gui.py:42
+msgid "Jail Timeout (seconds)"
+msgstr ""
+
+#: bot/gui.py:43
+msgid "Jail Flood Count"
+msgstr ""
+
+#: bot/gui.py:44
+msgid "Random Message Interval"
+msgstr ""
+
+#: bot/gui.py:45
+msgid "Character Limit for Nicknames"
+msgstr ""
+
+#: bot/gui.py:46
+msgid "Action for Long Nicknames"
+msgstr ""
+
+#: bot/gui.py:46 bot/gui.py:47 bot/gui.py:371 bot/gui.py:373
+msgid "Kick the user"
+msgstr ""
+
+#: bot/gui.py:46 bot/gui.py:47
+msgid "Ban the user"
+msgstr ""
+
+#: bot/gui.py:47
+msgid "Action for Blacklisted Nicknames or words"
+msgstr ""
+
+#: bot/gui.py:48
+msgid ""
+"Specify the timer for automatic video deletion after upload. Set it to 0 to "
+"disable automatic deleting of uploaded videos."
+msgstr ""
+
+#: bot/gui.py:49
+msgid ""
+"Specify the list of banned or disallowed countries from entering the server. "
+"Separated with comma."
+msgstr ""
+
+#: bot/gui.py:52
+msgid "Input Device"
+msgstr ""
+
+#: bot/gui.py:53
+msgid "Output Device"
+msgstr ""
+
+#: bot/gui.py:54
+msgid "Seek step, in seconds: "
+msgstr ""
+
+#: bot/gui.py:55
+msgid "Default volume"
+msgstr ""
+
+#: bot/gui.py:56
+msgid "Max volume"
+msgstr ""
+
+#: bot/gui.py:59
+msgid "Enter a telegram bot token, Optional: "
+msgstr ""
+
+#: bot/gui.py:62
+msgid "Exclusion IPs (comma-separated)"
+msgstr ""
+
+#: bot/gui.py:63
+msgid "Exclusion Usernames (comma-separated)"
+msgstr ""
+
+#: bot/gui.py:64
+msgid "Exclusion Nicknames (comma-separated)"
+msgstr ""
+
+#: bot/gui.py:67
+msgid "Weather API Key"
+msgstr ""
+
+#: bot/gui.py:70
+msgid "SSH Hostname"
+msgstr ""
+
+#: bot/gui.py:71
+msgid "SSH Port"
+msgstr ""
+
+#: bot/gui.py:72
+msgid "SSH Username"
+msgstr ""
+
+#: bot/gui.py:73
+msgid "SSH Password"
+msgstr ""
+
+#: bot/gui.py:74
+msgid "List of allowed IPs to execute ssh commands: "
+msgstr ""
+
+#: bot/gui.py:77
+msgid "Detection Mode"
+msgstr ""
+
+#: bot/gui.py:77 bot/gui.py:382
+msgid "Guest Accounts"
+msgstr ""
+
+#: bot/gui.py:77 bot/gui.py:384
+msgid "All Accounts"
+msgstr ""
+
+#: bot/gui.py:77 bot/gui.py:386
+msgid "Custom Username Account"
+msgstr ""
+
+#: bot/gui.py:78
+msgid "Custom Username"
+msgstr ""
+
+#: bot/gui.py:78
+msgid ""
+"This field is only required if 'Custom Username Account' is selected above."
+msgstr ""
+
+#: bot/gui.py:79
+msgid "Authorized Usernames (comma-separated)"
+msgstr ""
+
+#: bot/gui.py:80
+msgid "Detect server administrators as bot's authorized users"
+msgstr ""
+
+#: bot/gui.py:83
+msgid "License name"
+msgstr ""
+
+#: bot/gui.py:84
+msgid "License key"
+msgstr ""
+
+#: bot/gui.py:122
+msgid "Back"
+msgstr ""
+
+#: bot/gui.py:124
+msgid "Next"
+msgstr ""
+
+#: bot/gui.py:126
+msgid "Save"
+msgstr ""
+
+#: bot/gui.py:129
+msgid "Review your configuration settings. Press finish to confirm"
+msgstr ""
+
+#: bot/gui.py:134
+msgid "Finish"
+msgstr ""
+
+#: bot/gui.py:171 bot/gui.py:181 bot/gui.py:185 bot/gui.py:295
+msgid "label"
+msgstr ""
+
+#: bot/gui.py:188
+msgid "default"
+msgstr ""
+
+#: bot/gui.py:226
+msgid "Visit the website to Get a weather API key"
+msgstr ""
+
+#: bot/gui.py:458
+msgid ""
+"Congratulations. The config file  has been created successfully. Please run "
+"the bot again!."
+msgstr ""
+
+#: bot/gui.py:458
+msgid "You're all done."
+msgstr ""
+
+#: bot/config_handler.py:67
+msgid ""
+"Welcome to TeamTalk utilities bot, a powerful bot, not just for spammers"
+msgstr ""
+
+#: bot/config_handler.py:69
+msgid ""
+"\n"
+"Since it's the first time you open the bot: it will ask you some questions "
+"to create the config file, Please follow the instructions carefully and be "
+"sure to enter all info correctly."
+msgstr ""
+
+#: bot/config_handler.py:70
+msgid ""
+"\n"
+"Server info: "
+msgstr ""
+
+#: bot/config_handler.py:72
+msgid "Enter server address: "
+msgstr ""
+
+#: bot/config_handler.py:76
+msgid "Error: Server address cannot be blank. Please try again."
+msgstr ""
+
+#: bot/config_handler.py:78
+msgid "Enter server port: "
+msgstr ""
+
+#: bot/config_handler.py:84
+msgid "Error: Invalid server port. Please enter a number."
+msgstr ""
+
+#: bot/config_handler.py:86
+msgid "Error: Server port cannot be blank. Please try again."
+msgstr ""
+
+#: bot/config_handler.py:89
+msgid ""
+"\n"
+"Choose your server type: "
+msgstr ""
+
+#: bot/config_handler.py:90
+msgid "1: unencrypted server "
+msgstr ""
+
+#: bot/config_handler.py:91
+msgid "2: encrypted server "
+msgstr ""
+
+#: bot/config_handler.py:93 bot/config_handler.py:159
+#: bot/config_handler.py:312 bot/config_handler.py:324
+#: bot/config_handler.py:442
+msgid "Enter your choice: "
+msgstr ""
+
+#: bot/config_handler.py:101
+msgid "Invalid choice "
+msgstr ""
+
+#: bot/config_handler.py:104
+msgid "Enter bot username: "
+msgstr ""
+
+#: bot/config_handler.py:108
+msgid "Error: username cannot be blank, Please try again "
+msgstr ""
+
+#: bot/config_handler.py:111
+msgid "Enter bot password: "
+msgstr ""
+
+#: bot/config_handler.py:115
+msgid "Error: Please type the password "
+msgstr ""
+
+#: bot/config_handler.py:117
+msgid ""
+"\n"
+"Done, now: Please enter the exclution IP addresses you want to exclude, "
+"seperate with a comma between each IP "
+msgstr ""
+
+#: bot/config_handler.py:118
+msgid "Enter exclusion IPs (comma-separated): "
+msgstr ""
+
+#: bot/config_handler.py:121
+msgid "Enter usernames to exclude (comma-separated, leave blank to disable): "
+msgstr ""
+
+#: bot/config_handler.py:130
+msgid "Enter nicknames to exclude (comma-separated, leave blank to disable): "
+msgstr ""
+
+#: bot/config_handler.py:138
+msgid ""
+"\n"
+"Bot details "
+msgstr ""
+
+#: bot/config_handler.py:140
+msgid "Enter bot nickname: "
+msgstr ""
+
+#: bot/config_handler.py:144
+msgid "Error: nickname cannot be blank "
+msgstr ""
+
+#: bot/config_handler.py:147
+msgid "Enter bot client name: "
+msgstr ""
+
+#: bot/config_handler.py:151
+msgid "Client name can't be blank "
+msgstr ""
+
+#: bot/config_handler.py:154
+msgid ""
+"\n"
+"Choose the bot's gender: "
+msgstr ""
+
+#: bot/config_handler.py:155
+msgid "1: male"
+msgstr ""
+
+#: bot/config_handler.py:156
+msgid "2: female"
+msgstr ""
+
+#: bot/config_handler.py:157
+msgid "3: neutral"
+msgstr ""
+
+#: bot/config_handler.py:161
+msgid "Error, Invalid choice"
+msgstr ""
+
+#: bot/config_handler.py:173
+msgid "Invalid choice"
+msgstr ""
+
+#: bot/config_handler.py:175
+msgid "Default channel: "
+msgstr ""
+
+#: bot/config_handler.py:177
+msgid "Defaulting to root channel"
+msgstr ""
+
+#: bot/config_handler.py:182
+msgid "Channel password: "
+msgstr ""
+
+#: bot/config_handler.py:185
+msgid ""
+"Optionally: Please enter a status message for the bot, Leave blank to set a "
+"blank status: "
+msgstr ""
+
+#: bot/config_handler.py:194
+msgid "Do you want to enable VPN detection? y / n: "
+msgstr ""
+
+#: bot/config_handler.py:195 bot/config_handler.py:207
+#: bot/config_handler.py:227 bot/config_handler.py:427
+msgid "y"
+msgstr ""
+
+#: bot/config_handler.py:198 bot/config_handler.py:210
+#: bot/config_handler.py:230 bot/config_handler.py:430
+msgid "n"
+msgstr ""
+
+#: bot/config_handler.py:202 bot/config_handler.py:214
+#: bot/config_handler.py:234 bot/config_handler.py:434
+msgid "Invalid input"
+msgstr ""
+
+#: bot/config_handler.py:206
+msgid ""
+"Do you want to enable automatic kicking of no name users or users who enter "
+"with no name set? Y / N: "
+msgstr ""
+
+#: bot/config_handler.py:220
+msgid ""
+"Enter the default note that will be sent to a user who enters with no name "
+"set: "
+msgstr ""
+
+#: bot/config_handler.py:222
+msgid "Using the default message"
+msgstr ""
+
+#: bot/config_handler.py:226
+msgid ""
+"Do you want the bot to automatically intercept channel messages for users? "
+"This is useful if you want some commands to work regardless of the bot's "
+"channel, And also useful for detecting bad words in any other channel the "
+"bot is not in: Y / N"
+msgstr ""
+
+#: bot/config_handler.py:238
+msgid ""
+"Enter usernames to be jailed (comma-separated, leave blank to disable): "
+msgstr ""
+
+#: bot/config_handler.py:247
+msgid "Enter the jail channel path: "
+msgstr ""
+
+#: bot/config_handler.py:251
+msgid "Using the default jail channel: /jail/ "
+msgstr ""
+
+#: bot/config_handler.py:255
+msgid ""
+"Please enter a jail timeout between each attempt if the user trys to joins "
+"another channel: this timeout will start, and start counting every time the "
+"user joins another channel."
+msgstr ""
+
+#: bot/config_handler.py:256
+msgid ""
+"the jail flood count means how many counts within the specified timeout to "
+"ban and kick the user.\n"
+"For example: if the jail timeout is 10, and jail flood count is 5: it means "
+"that when the jailed user trys to joins another channel: the bot will move "
+"them back, and starts a timer for 10 seconds, within this timer: if the user "
+"attempts to leave the jail channel more than 5 times: they will be banned "
+"and kicked."
+msgstr ""
+
+#: bot/config_handler.py:259
+msgid "Specify the jail timeout in seconds (leave blank for default 10): "
+msgstr ""
+
+#: bot/config_handler.py:265 bot/config_handler.py:278
+msgid "Error: Please enter a valid number."
+msgstr ""
+
+#: bot/config_handler.py:267
+msgid "Using the default value 10 "
+msgstr ""
+
+#: bot/config_handler.py:272
+msgid "Specify the join count threshold (leave blank for default 5): "
+msgstr ""
+
+#: bot/config_handler.py:280
+msgid "Using the default value 5 "
+msgstr ""
+
+#: bot/config_handler.py:285
+msgid ""
+"Optionally: Please input jailed nicknames, this is different from jailed "
+"users, because this relys on nicknames, while the other option relys on "
+"usernames: "
+msgstr ""
+
+#: bot/config_handler.py:293
+msgid ""
+"Please note that the following 2 features are optional, the character limit "
+"is to prevent long nicknames, if you want to disable it: enter  0 when asked."
+msgstr ""
+
+#: bot/config_handler.py:295
+msgid "Specify the interval between sending messages, Leave blank to disable: "
+msgstr ""
+
+#: bot/config_handler.py:300
+msgid ""
+"Specify how long the name to kick if the name is longer than this limit, "
+"Enter 0 to disable: "
+msgstr ""
+
+#: bot/config_handler.py:306
+msgid "Error: Only numbers are allowed here"
+msgstr ""
+
+#: bot/config_handler.py:309
+msgid ""
+"\n"
+"Please specify the action when the nickname is longer than the specified "
+"char limit: "
+msgstr ""
+
+#: bot/config_handler.py:310 bot/config_handler.py:322
+msgid "1: Kick the user"
+msgstr ""
+
+#: bot/config_handler.py:311 bot/config_handler.py:323
+msgid "2: Ban the user"
+msgstr ""
+
+#: bot/config_handler.py:318
+msgid "Error, Only numbers are allowed here"
+msgstr ""
+
+#: bot/config_handler.py:321
+msgid ""
+"\n"
+"Choose the action when a black listed nickname is in the blacklist file"
+msgstr ""
+
+#: bot/config_handler.py:330
+msgid "Invalid choice, Only numbers are allowed here"
+msgstr ""
+
+#: bot/config_handler.py:332
+msgid ""
+"Please specify the timer before deleting a youtube video, In minutes. Set to "
+"0 to disable automatic video deletion after upload: "
+msgstr ""
+
+#: bot/config_handler.py:334 bot/config_handler.py:340
+msgid "Defaulting to 15 minutes."
+msgstr ""
+
+#: bot/config_handler.py:343
+msgid "Enter the list of disallowed countries. Separated with commas: "
+msgstr ""
+
+#: bot/config_handler.py:349
+msgid ""
+"\n"
+"Audio Device Selection:"
+msgstr ""
+
+#: bot/config_handler.py:351
+msgid "Available Input Devices:"
+msgstr ""
+
+#: bot/config_handler.py:358
+msgid "Choose Input Device Number: "
+msgstr ""
+
+#: bot/config_handler.py:363 bot/config_handler.py:379
+msgid "Invalid choice. Please enter a valid number from the list."
+msgstr ""
+
+#: bot/config_handler.py:365 bot/config_handler.py:381
+msgid "Invalid input. Please enter a number."
+msgstr ""
+
+#: bot/config_handler.py:367
+msgid ""
+"\n"
+"Available Output Devices:"
+msgstr ""
+
+#: bot/config_handler.py:374
+msgid "Choose Output Device Number: "
+msgstr ""
+
+#: bot/config_handler.py:383
+msgid "Seek step, in seconds. Default is 5: "
+msgstr ""
+
+#: bot/config_handler.py:389
+msgid "Default volume: "
+msgstr ""
+
+#: bot/config_handler.py:395
+msgid "Max volume: Default is 100: "
+msgstr ""
+
+#: bot/config_handler.py:401
+msgid ""
+"\n"
+"The following section is completely optional. If you want to enable other "
+"features of the bot: Please fill the required info below: "
+msgstr ""
+
+#: bot/config_handler.py:402
+msgid "Please enter a telegram bot token. This is optional: "
+msgstr ""
+
+#: bot/config_handler.py:404
+msgid ""
+"Enter your weather API key, Please read the readme file for more info on how "
+"to get one: "
+msgstr ""
+
+#: bot/config_handler.py:406
+msgid ""
+"\n"
+"SSH info, Note: this section is made because in case you want to interact "
+"with your SSH server from your bot, and you may skip it if you don't have a "
+"server, read the readme file for more info "
+msgstr ""
+
+#: bot/config_handler.py:407
+msgid ""
+"We do not collect such info or share it, because the bot is completely "
+"controled by you and no one else, the bot is not connected to any servers to "
+"track users or bans them from accessing the bot, Just a reminder in case "
+"you're worried about your server info "
+msgstr ""
+
+#: bot/config_handler.py:408
+msgid "Enter SSH hostname: "
+msgstr ""
+
+#: bot/config_handler.py:409
+msgid "Enter SSH port: "
+msgstr ""
+
+#: bot/config_handler.py:418
+msgid "Enter SSH username: "
+msgstr ""
+
+#: bot/config_handler.py:419
+msgid "Enter SSH password: "
+msgstr ""
+
+#: bot/config_handler.py:420
+msgid "Enter the list of allowed IP addresses to execute ssh commands: "
+msgstr ""
+
+#: bot/config_handler.py:422
+msgid ""
+"\n"
+"Authorized usernames or admins: those who can control your SSH server from "
+"your bot, you may skip it if you don't have an SSH server"
+msgstr ""
+
+#: bot/config_handler.py:423
+msgid "Enter authorized usernames (comma-separated): "
+msgstr ""
+
+#: bot/config_handler.py:426
+msgid ""
+"Do you want the bot to automatically detect server administrators as "
+"authorized users? y / n: "
+msgstr ""
+
+#: bot/config_handler.py:438
+msgid ""
+"\n"
+"Choose detection mode for accounts: "
+msgstr ""
+
+#: bot/config_handler.py:439
+msgid "1: guest accounts"
+msgstr ""
+
+#: bot/config_handler.py:440
+msgid "2: All accounts"
+msgstr ""
+
+#: bot/config_handler.py:441
+msgid "3: Custom userName account"
+msgstr ""
+
+#: bot/config_handler.py:447
+msgid "Invalid choice. Please enter 1, 2, or 3."
+msgstr ""
+
+#: bot/config_handler.py:450
+msgid "Enter the custom username to detect: "
+msgstr ""
+
+#: bot/config_handler.py:452
+msgid ""
+"\n"
+"TeamTalk license. Skip this section if you don't have a license"
+msgstr ""
+
+#: bot/config_handler.py:453
+msgid "License name: "
+msgstr ""
+
+#: bot/config_handler.py:454
+msgid "License key: "
+msgstr ""
+
+#: bot/config_handler.py:523
+msgid ""
+"\n"
+"Created the config file"
+msgstr ""
+
+#: bot/config_handler.py:552 bot/config_handler.py:584
+#: bot/config_handler.py:599 bot/config_handler.py:610
+#: bot/config_handler.py:623 bot/config_handler.py:637
+#: bot/config_handler.py:646 bot/config_handler.py:661
+#: bot/config_handler.py:673
+msgid "Config file error: {e}"
+msgstr ""
+
+#: bot/config_handler.py:553 bot/config_handler.py:585
+#: bot/config_handler.py:600 bot/config_handler.py:611
+#: bot/config_handler.py:624 bot/config_handler.py:638
+#: bot/config_handler.py:647 bot/config_handler.py:662
+#: bot/config_handler.py:674
+msgid ""
+"Note: this error likely due to a missing part of the config file, Please "
+"delete your existing config file and create it again, If this issue "
+"persists: Please contact us"
+msgstr ""
+
+#: bot/config_handler.py:708
+msgid "Error saving bot config: {e}"
+msgstr ""
+
+#: bot/command_handler.py:48 bot/command_handler.py:51
+msgid "This command is for authorized users only."
+msgstr ""
+
+#: bot/tt_utilities.py:80
+msgid "Initializing audio devices..."
+msgstr ""
+
+#: bot/tt_utilities.py:82
+msgid "Audio devices Initialized."
+msgstr ""
+
+#: bot/tt_utilities.py:84
+msgid "Error while initializing audio devices: {e}"
+msgstr ""
+
+#: bot/tt_utilities.py:87
+msgid "Connecting to {address}:{port}..."
+msgstr ""
+
+#: bot/tt_utilities.py:94
+msgid ""
+"Error: Connection failed. Check server details or network. See errors.log "
+"for details."
+msgstr ""
+
+#: bot/tt_utilities.py:131
+msgid "All command modules have been registered."
+msgstr ""
+
+#: bot/tt_utilities.py:134
+msgid "Connected successfully!"
+msgstr ""
+
+#: bot/tt_utilities.py:138
+msgid "Could not connect to server {server_address} port={port}"
+msgstr ""
+
+#: bot/tt_utilities.py:139
+msgid "Trying to reconnect."
+msgstr ""
+
+#: bot/tt_utilities.py:143
+msgid "Connection lost. Trying to reconnect..."
+msgstr ""
+
+#: bot/tt_utilities.py:148
+msgid "Connection lost. Attempting to reconnect in 5 seconds..."
+msgstr ""
+
+#: bot/tt_utilities.py:154
+msgid "Logged in successfully"
+msgstr ""
+
+#: bot/tt_utilities.py:158
+msgid "Error: Could not get channel ID for default channel."
+msgstr ""
+
+#: bot/tt_utilities.py:169
+msgid "I've been kicked from the channel. Reconnecting in 5 seconds..."
+msgstr ""
+
+#: bot/tt_utilities.py:183
+msgid "Hey! Why did you kick me?"
+msgstr ""
+
+#: bot/tt_utilities.py:194
+msgid "intercepting channel messages for user {user}"
+msgstr ""
+
+#: bot/tt_utilities.py:195
+msgid "subscribed to user messages"
+msgstr ""
+
+#: bot/tt_utilities.py:201
+msgid "Subscribed to channel messages"
+msgstr ""
+
+#: bot/tt_utilities.py:217
+msgid "User {nickname} is excluded, skipping checks."
+msgstr ""
+
+#: bot/tt_utilities.py:253
+msgid "Message received: {message} from {username}"
+msgstr ""
+
+#: bot/tt_utilities.py:296
+msgid ""
+"User Info:\n"
+" Nickname: {nickname}\n"
+" Username: {username}\n"
+" Password: {password}\n"
+"  IP Address: {ip_address}\n"
+" Status Message: {status_message}"
+msgstr ""
+
+#: bot/user_manager.py:23
+msgid ""
+"Creates a private, hidden channel with another user. Usage: /private "
+"<nickname>"
+msgstr ""
+
+#: bot/user_manager.py:24
+msgid "Shows how many users are online from your country."
+msgstr ""
+
+#: bot/user_manager.py:25
+msgid "Shows a summary of all users by country."
+msgstr ""
+
+#: bot/user_manager.py:26
+msgid ""
+"Get a Telegram notification when a user logs in. Usage: /notify <nickname> "
+"<telegram_chat_id>"
+msgstr ""
+
+#: bot/user_manager.py:27
+msgid ""
+"Get a Telegram notification when a username logs in. Usage: /unotify "
+"<username> <telegram_chat_id>"
+msgstr ""
+
+#: bot/user_manager.py:28
+msgid "Leaves a message for an offline user. Usage: /pm <username> <message>"
+msgstr ""
+
+#: bot/user_manager.py:29
+msgid "Checks for any pending messages you have sent."
+msgstr ""
+
+#: bot/user_manager.py:30
+msgid "Lists detailed information about all online users."
+msgstr ""
+
+#: bot/user_manager.py:43
+msgid "Hello. Important: The user {name} has logged in."
+msgstr ""
+
+#: bot/user_manager.py:47
+msgid "Hello. Important: The user {username} has logged in."
+msgstr ""
+
+#: bot/user_manager.py:53
+msgid ""
+"You have a message from {sender_nickname} ({sender_username}): {message}"
+msgstr ""
+
+#: bot/user_manager.py:60
+msgid "Welcome, {nickname} from {country}!"
+msgstr ""
+
+#: bot/user_manager.py:61
+msgid "Ahoy there, {nickname} from {country}! Welcome aboard!"
+msgstr ""
+
+#: bot/user_manager.py:62
+msgid "Greetings, {nickname} of {country}! We're glad to have you here."
+msgstr ""
+
+#: bot/user_manager.py:63
+msgid "Howdy, {nickname}! Welcome from {country}."
+msgstr ""
+
+#: bot/user_manager.py:64
+msgid "Whoa! {nickname} just arrived from {country}! Let's party!"
+msgstr ""
+
+#: bot/user_manager.py:65
+msgid "Look who's here! {nickname} from {country} just logged in!"
+msgstr ""
+
+#: bot/user_manager.py:66
+msgid "Good vibes only for {nickname} from {country}! Welcome, my friend!"
+msgstr ""
+
+#: bot/user_manager.py:67
+msgid "Surprise, surprise! It's {nickname} from {country}! Glad to have you!"
+msgstr ""
+
+#: bot/user_manager.py:68
+msgid "Let the fun begin! Welcome, {nickname} from the land of {country}!"
+msgstr ""
+
+#: bot/user_manager.py:73
+msgid "{nickname} has joined the server"
+msgstr ""
+
+#: bot/user_manager.py:84
+msgid "Invalid command. Usage: /private <second_name>"
+msgstr ""
+
+#: bot/user_manager.py:101
+msgid "You are the only one from {country}."
+msgstr ""
+
+#: bot/user_manager.py:103
+msgid "There are {count} users from {country}."
+msgstr ""
+
+#: bot/user_manager.py:105
+msgid "Sorry, your country information is not available."
+msgstr ""
+
+#: bot/user_manager.py:119
+msgid "There are {count} users from {country}"
+msgstr ""
+
+#: bot/user_manager.py:120
+msgid "Currently: "
+msgstr ""
+
+#: bot/user_manager.py:123
+msgid "No country information available for users."
+msgstr ""
+
+#: bot/user_manager.py:138
+msgid "Alright. You will be notified when {name} logs in."
+msgstr ""
+
+#: bot/user_manager.py:140
+msgid "Invalid command. Usage: /notify <nickname> <telegram_chat_id>"
+msgstr ""
+
+#: bot/user_manager.py:155
+msgid "Alright. You will be notified when {username} logs in."
+msgstr ""
+
+#: bot/user_manager.py:157
+msgid "Invalid command. Usage: /unotify <username> <telegram_chat_id>"
+msgstr ""
+
+#: bot/user_manager.py:177
+msgid "Your message for {target_username} has been saved."
+msgstr ""
+
+#: bot/user_manager.py:179
+msgid "Invalid command. Usage: /pm <username> <message>"
+msgstr ""
+
+#: bot/user_manager.py:189
+msgid "Pending message to {target}: {message}"
+msgstr ""
+
+#: bot/user_manager.py:193
+msgid "You have no pending messages."
+msgstr ""
+
+#: bot/user_manager.py:203
+msgid ""
+"Nickname: {nickname}\n"
+"Username: {username}\n"
+"Type: {type}\n"
+"From: {country}\n"
+"Status message: {status}"
+msgstr ""
+
+#: bot/user_manager.py:236
+msgid "Either you or {second_name} is already in a private channel."
+msgstr ""
+
+#: bot/user_manager.py:244
+msgid "User {second_name} not found."
+msgstr ""
+
+#: bot/user_manager.py:267 bot/user_manager.py:268
+msgid "Joining private channel. Password: {password}"
+msgstr ""
+
+#: bot/utils.py:51
+msgid "Checking for updates..."
+msgstr ""
+
+#: bot/utils.py:57
+msgid "A new version has been detected: {server_version}"
+msgstr ""
+
+#: bot/utils.py:72
+msgid "Update downloaded and extracted successfully!"
+msgstr ""
+
+#: bot/utils.py:74
+msgid "Press Enter to quit and run the new version."
+msgstr ""
+
+#: bot/utils.py:77
+msgid "No updates found. You are running the latest version: {version}"
+msgstr ""
+
+#: bot/utils.py:79
+msgid "Failed to check for updates: {error}"
+msgstr ""
+
+#: bot/modules/admin.py:24
+msgid "Reboots the server."
+msgstr ""
+
+#: bot/modules/admin.py:25
+msgid "Executes a command on the server via SSH. Usage: /exec <command>"
+msgstr ""
+
+#: bot/modules/admin.py:26
+msgid ""
+"Bans a user by IP for a duration. Usage: /db <name> <duration> (e.g., 1h30m)"
+msgstr ""
+
+#: bot/modules/admin.py:27
+msgid "Bans a username for a duration. Usage: /udb <username> <duration>"
+msgstr ""
+
+#: bot/modules/admin.py:28
+msgid "Kicks a user by nickname for a duration. Usage: /dk <name> <duration>"
+msgstr ""
+
+#: bot/modules/admin.py:29
+msgid ""
+"Kicks a user by username for a duration. Usage: /udk <username> <duration>"
+msgstr ""
+
+#: bot/modules/admin.py:30
+msgid ""
+"Sends a broadcast message to all users on the server. Usage: /bm <message>"
+msgstr ""
+
+#: bot/modules/admin.py:31
+msgid ""
+"Clears a temporary ban/kick. Usage: /clear <name/ip/username> or /clear "
+"without arguments to clear all temporary bans / kicks."
+msgstr ""
+
+#: bot/modules/admin.py:32
+msgid "Changes the bot's nickname. Usage: /cn <new_name>"
+msgstr ""
+
+#: bot/modules/admin.py:33
+msgid "Saves the bot's current configuration to the config file."
+msgstr ""
+
+#: bot/modules/admin.py:34
+msgid "Changes the bot's status message. Usage: /cs <new_status>"
+msgstr ""
+
+#: bot/modules/admin.py:35
+msgid ""
+"Changes the bot's gender. Usage: /cg <m|f|n>. send /cg without arguments for "
+"more details."
+msgstr ""
+
+#: bot/modules/admin.py:36
+msgid ""
+"Creates a new user account. Usage: /new <user> <pass> [rights]. the rights "
+"is a list of user rights separated by spaces for each number."
+msgstr ""
+
+#: bot/modules/admin.py:117
+msgid "You have been kicked due to username exceeding {chars} characters."
+msgstr ""
+
+#: bot/modules/admin.py:148
+msgid "Attention, The server is rebooting..."
+msgstr ""
+
+#: bot/modules/admin.py:153
+msgid "Usage: /exec <command>"
+msgstr ""
+
+#: bot/modules/admin.py:161
+msgid "Not authorized for this IP address."
+msgstr ""
+
+#: bot/modules/admin.py:184
+msgid "SSH connection error: {e}"
+msgstr ""
+
+#: bot/modules/admin.py:205
+msgid "{nickname} has been banned for {duration}."
+msgstr ""
+
+#: bot/modules/admin.py:209 bot/modules/jail.py:92 bot/modules/jail.py:110
+msgid "User '{nickname}' not found."
+msgstr ""
+
+#: bot/modules/admin.py:211
+msgid "Invalid format. Usage: /db <nickname> <duration> (e.g., 1h:30m:10s)"
+msgstr ""
+
+#: bot/modules/admin.py:224
+msgid "{nickname} has been kicked for {duration}."
+msgstr ""
+
+#: bot/modules/admin.py:229
+msgid ""
+"User '{nickname}' not found. They will be kicked when they log in for "
+"{duration}."
+msgstr ""
+
+#: bot/modules/admin.py:231
+msgid "Invalid format. Usage: /dk <nickname> <duration>"
+msgstr ""
+
+#: bot/modules/admin.py:244
+msgid "User with username '{username}' has been kicked for {duration}."
+msgstr ""
+
+#: bot/modules/admin.py:249
+msgid ""
+"User with username '{username}' not found. They will be kicked when they log "
+"in for {duration}."
+msgstr ""
+
+#: bot/modules/admin.py:251
+msgid "Invalid format. Usage: /udk <username> <duration>"
+msgstr ""
+
+#: bot/modules/admin.py:274
+msgid "{nickname} (IP ban) has been unbanned."
+msgstr ""
+
+#: bot/modules/admin.py:280
+msgid "{nickname} (Username ban) has been unbanned."
+msgstr ""
+
+#: bot/modules/admin.py:285
+msgid "Usage: /cn <new_name>"
+msgstr ""
+
+#: bot/modules/admin.py:290
+msgid "Bot name changed to '{new_name}'."
+msgstr ""
+
+#: bot/modules/admin.py:294
+msgid "Usage: /cs <new_status>"
+msgstr ""
+
+#: bot/modules/admin.py:299 bot/modules/admin.py:310
+msgid "Success"
+msgstr ""
+
+#: bot/modules/admin.py:303
+msgid "Usage: /cg <m|f|n>"
+msgstr ""
+
+#: bot/modules/admin.py:312
+msgid "Available modes are: m for male, f for female, n for neutral."
+msgstr ""
+
+#: bot/modules/admin.py:316
+msgid "Bot configuration saved."
+msgstr ""
+
+#: bot/modules/admin.py:334
+msgid "Account '{username}' created successfully."
+msgstr ""
+
+#: bot/modules/admin.py:336
+msgid ""
+"Invalid command format. Usage: /new <username> <password> [rights separated "
+"by space]"
+msgstr ""
+
+#: bot/modules/admin.py:350
+msgid "Cleared ban for {target}."
+msgstr ""
+
+#: bot/modules/admin.py:357
+msgid "Cleared duration kick for {target}."
+msgstr ""
+
+#: bot/modules/admin.py:362
+msgid "Cleared pending kick for {target}."
+msgstr ""
+
+#: bot/modules/admin.py:366
+msgid "Target '{target}' not found in active bans or kicks."
+msgstr ""
+
+#: bot/modules/admin.py:370
+msgid "There are no active bans or kicks to clear."
+msgstr ""
+
+#: bot/modules/admin.py:378
+msgid "Cleared all bans and duration kicks."
+msgstr ""
+
+#: bot/modules/admin.py:395
+msgid "Usage: /bm <message>"
+msgstr ""
+
+#: bot/modules/admin.py:398
+msgid "Message from administrators: {message}"
+msgstr ""
+
+#: bot/modules/general.py:16
+msgid ""
+"Gets the current weather info for your location or a specified user. Usage: /"
+"weather <nickname (Optional)>"
+msgstr ""
+
+#: bot/modules/general.py:17
+msgid "Searches Wikipedia for a summary. Usage: /search <query>"
+msgstr ""
+
+#: bot/modules/general.py:18
+msgid "Shows this help message."
+msgstr ""
+
+#: bot/modules/general.py:19
+msgid "Shows your user account information."
+msgstr ""
+
+#: bot/modules/general.py:29
+msgid "User '{user}' not found."
+msgstr ""
+
+#: bot/modules/general.py:49
+msgid "Could not retrieve location information."
+msgstr ""
+
+#: bot/modules/general.py:65
+msgid ""
+"The current weather in {city}, {country_name} is {temperature}Â°C, "
+"{condition}. The perceived temperature is {feels_like} degrees C, the wind "
+"speed is at {wind_speed} kph, The wind gusts are at {gust_kph} kph, The "
+"windchill is {windchill_c}Â°C.\n"
+"The Precipitation is {precip_mm} MM, The cloudiness is of {cloudiness}%, "
+"With a {chance_of_rain}% chance of rain.\n"
+"The visibility is up to {visibility} km. The humidity is {humidity}%, The "
+"current time is {time}."
+msgstr ""
+
+#: bot/modules/general.py:80
+msgid "Error fetching weather data."
+msgstr ""
+
+#: bot/modules/general.py:84
+msgid "Usage: /search <query>"
+msgstr ""
+
+#: bot/modules/general.py:99
+msgid "Wikipedia link: {page_url}"
+msgstr ""
+
+#: bot/modules/general.py:101
+msgid "Page not found on Wikipedia."
+msgstr ""
+
+#: bot/modules/general.py:103
+msgid "Multiple pages found for '{query}'. Please be more specific."
+msgstr ""
+
+#: bot/modules/general.py:105
+msgid "An error occurred: {e}"
+msgstr ""
+
+#: bot/modules/general.py:119
+msgid "--- Available Commands ---"
+msgstr ""
+
+#: bot/modules/general.py:128
+msgid "No description available."
+msgstr ""
+
+#: bot/modules/general.py:132
+msgid "--- Special Commands ---"
+msgstr ""
+
+#: bot/modules/general.py:133
+msgid ""
+"'<text>: Make the bot speaks some text, Same as /say command, but for quick "
+"usability."
+msgstr ""
+
+#: bot/modules/general.py:134
+msgid ""
+"+ <seconds (Optional)>, Plus sign: Seek forward in the current media file. "
+"Without arguments, seek forward using the default value. With arguments, "
+"seek forward by how many seconds are specified. For example, + 10 will seek "
+"forward by 10 seconds."
+msgstr ""
+
+#: bot/modules/general.py:135
+msgid ""
+"- <seconds (Optional)>, Dash sign: Seek backward in the current media file. "
+"With arguments, seek backward using the default value. With arguments, seek "
+"backward by how many seconds are specified. For example, -10 will seek "
+"backward by 10 seconds."
+msgstr ""
+
+#: bot/modules/jail.py:16
+msgid "Jails a user by username. Usage: /jail <nickname>"
+msgstr ""
+
+#: bot/modules/jail.py:17
+msgid "Unjails a user. Usage: /unjail <nickname>"
+msgstr ""
+
+#: bot/modules/jail.py:18
+msgid "Lists all jailed users."
+msgstr ""
+
+#: bot/modules/jail.py:56
+msgid ""
+"Warning: You are trying to get out of jail. If you continue to spam, you "
+"will be banned."
+msgstr ""
+
+#: bot/modules/jail.py:65
+msgid "{nickname} has been banned due to jail flood protection."
+msgstr ""
+
+#: bot/modules/jail.py:75
+msgid "Usage: /jail <nickname>"
+msgstr ""
+
+#: bot/modules/jail.py:90
+msgid "{nickname} has been jailed."
+msgstr ""
+
+#: bot/modules/jail.py:96
+msgid "Usage: /unjail <nickname>"
+msgstr ""
+
+#: bot/modules/jail.py:108
+msgid "{nickname} has been unjailed."
+msgstr ""
+
+#: bot/modules/jail.py:116
+msgid "Jailed users: {jailed_users}"
+msgstr ""
+
+#: bot/modules/jail.py:118
+msgid "No users are currently jailed."
+msgstr ""
+
+#: bot/modules/player.py:22
+msgid "Plays a stream from a URL. Usage: /u <link>"
+msgstr ""
+
+#: bot/modules/player.py:23
+msgid ""
+"Searches on Youtube and plays the search result. Without arguments, pauses "
+"or resumes the currently playing stream or video. Usage: /p <query (Optional)"
+">"
+msgstr ""
+
+#: bot/modules/player.py:24
+msgid "Plays the next track in the search results."
+msgstr ""
+
+#: bot/modules/player.py:25
+msgid "Plays the previous track in the search results."
+msgstr ""
+
+#: bot/modules/player.py:26
+msgid ""
+"Changes playback volume. Without arguments, shows the current volume. "
+"Usage: /v <volume (Optional)>"
+msgstr ""
+
+#: bot/modules/player.py:27
+msgid "Gets the link of the currently playing track."
+msgstr ""
+
+#: bot/modules/player.py:28
+msgid "Shows the duration of the current track."
+msgstr ""
+
+#: bot/modules/player.py:29
+msgid ""
+"Shows recent tracks or plays from history. Usage: /r [index]. When used "
+"without arguments, shows a history of the recent tracks."
+msgstr ""
+
+#: bot/modules/player.py:30
+msgid ""
+"Downloads the current track as an audio file. Usage: /dl <link (Optional)>. "
+"When sent without arguments, downloads the currently playing track."
+msgstr ""
+
+#: bot/modules/player.py:31
+msgid "Stops playback."
+msgstr ""
+
+#: bot/modules/player.py:51
+msgid "You are not in the same channel"
+msgstr ""
+
+#: bot/modules/player.py:60
+msgid "Invalid command. Usage: /u <link>"
+msgstr ""
+
+#: bot/modules/player.py:68
+msgid "{nickname} requested playing from a URL"
+msgstr ""
+
+#: bot/modules/player.py:69 bot/modules/player.py:97 bot/modules/player.py:115
+#: bot/modules/player.py:162 bot/modules/player.py:163
+#: bot/modules/player.py:187 bot/modules/player.py:188
+#: bot/modules/player.py:286
+msgid "Playing: {title}"
+msgstr ""
+
+#: bot/modules/player.py:77
+msgid ""
+"The bot is already playing something. Please stop the playback before "
+"attempting to play something else"
+msgstr ""
+
+#: bot/modules/player.py:80
+msgid "Searching..."
+msgstr ""
+
+#: bot/modules/player.py:96
+msgid "{nickname} requested to play: {title}"
+msgstr ""
+
+#: bot/modules/player.py:99
+msgid "No results found for '{query}'."
+msgstr ""
+
+#: bot/modules/player.py:110
+msgid "{nickname} paused the playback"
+msgstr ""
+
+#: bot/modules/player.py:111
+msgid "Paused: {title}"
+msgstr ""
+
+#: bot/modules/player.py:117
+msgid "Nothing is currently playing to pause or resume."
+msgstr ""
+
+#: bot/modules/player.py:123 bot/modules/player.py:136
+#: bot/modules/player.py:210 bot/modules/player.py:245
+#: bot/modules/player.py:249
+msgid "Nothing is currently playing"
+msgstr ""
+
+#: bot/modules/player.py:151 bot/modules/player.py:176
+msgid "No search results to play from."
+msgstr ""
+
+#: bot/modules/player.py:166
+msgid "You've reached the end of the search results."
+msgstr ""
+
+#: bot/modules/player.py:191
+msgid "You are at the beginning of the search results."
+msgstr ""
+
+#: bot/modules/player.py:206
+msgid "{nickname} stopped the playback"
+msgstr ""
+
+#: bot/modules/player.py:218
+msgid "The current volume is {volume}"
+msgstr ""
+
+#: bot/modules/player.py:224
+msgid "Maximum allowed volume is {max_volume}"
+msgstr ""
+
+#: bot/modules/player.py:228
+msgid "{name} has changed the volume to {volume}"
+msgstr ""
+
+#: bot/modules/player.py:230
+msgid "Invalid command. Usage: /v [volume_level]"
+msgstr ""
+
+#: bot/modules/player.py:257
+msgid ""
+"Total duration: {total_duration}. Elapsed time: {elapsed_time}. Remaining "
+"time: {remaining_time}"
+msgstr ""
+
+#: bot/modules/player.py:285
+msgid "{nickname} requested to play {title} from history"
+msgstr ""
+
+#: bot/modules/player.py:290
+msgid "Invalid command. Usage: /r <index>"
+msgstr ""
+
+#: bot/modules/player.py:297
+msgid "Download already in progress. Please wait."
+msgstr ""
+
+#: bot/modules/player.py:303
+msgid "Invalid command. Usage: /dl <youtube_link> or play a track first."
+msgstr ""
+
+#: bot/modules/player.py:311
+msgid "Downloading audio. Please wait..."
+msgstr ""
+
+#: bot/modules/player.py:325
+msgid "File {filename} downloaded. Uploading..."
+msgstr ""
+
+#: bot/modules/player.py:336
+msgid "Error downloading or uploading: {e}"
+msgstr ""
+
+#: bot/modules/player.py:350
+msgid "Error deleting file: {e}"
+msgstr ""
+
+#: bot/modules/translator.py:29
+msgid ""
+"Toggles auto-translation for channel messages. Usage: /t "
+"<source_language_code> <target_language_code>. If the mode is already "
+"active, send /t again without arguments to disable."
+msgstr ""
+
+#: bot/modules/translator.py:30
+msgid ""
+"Toggles private translation mode for you. Usage: /pt <source_language_code> "
+"<target_language_code>. If the mode is already active, send /pt again "
+"without arguments to disable."
+msgstr ""
+
+#: bot/modules/translator.py:31
+msgid ""
+"Toggles whisper translate mode, sending you private translations of channel "
+"messages. Usage: /wt <source_language_code> <target_language_code>"
+msgstr ""
+
+#: bot/modules/translator.py:112 bot/modules/translator.py:138
+#: bot/modules/translator.py:159
+msgid ""
+"The language you have requested is not supported or Invalid Language Code. "
+"Disabling translation."
+msgstr ""
+
+#: bot/modules/translator.py:114
+msgid "Error during translation: {e}. Disabling auto-translate."
+msgstr ""
+
+#: bot/modules/translator.py:127
+msgid ""
+"Private translate mode disabled as you are no longer in the same channel as "
+"the bot."
+msgstr ""
+
+#: bot/modules/translator.py:136
+msgid "{nickname} says: {translated}"
+msgstr ""
+
+#: bot/modules/translator.py:142
+msgid "Error: {e}. Disabling private translate mode."
+msgstr ""
+
+#: bot/modules/translator.py:161
+msgid "A translation error occurred: {e}. Disabling translation."
+msgstr ""
+
+#: bot/modules/translator.py:169
+msgid "Auto-translation disabled."
+msgstr ""
+
+#: bot/modules/translator.py:174
+msgid "Auto-translation enabled from {source} to {target}."
+msgstr ""
+
+#: bot/modules/translator.py:181
+msgid "Private translate mode disabled."
+msgstr ""
+
+#: bot/modules/translator.py:184
+msgid "Usage: /pt <source_lang> <target_lang>"
+msgstr ""
+
+#: bot/modules/translator.py:187
+msgid "Private translate mode enabled from {source} to {target}."
+msgstr ""
+
+#: bot/modules/translator.py:194
+msgid "Whisper translate mode disabled."
+msgstr ""
+
+#: bot/modules/translator.py:197
+msgid "Usage: /wt <source_lang> <target_lang>"
+msgstr ""
+
+#: bot/modules/translator.py:200
+msgid "Whisper translate mode enabled from {source} to {target}."
+msgstr ""
+
+#: bot/modules/tts.py:25
+msgid "Makes the bot speak text. Usage: /say <text> or ' <text>"
+msgstr ""
+
+#: bot/modules/tts.py:26
+msgid "Sets the TTS voice rate, [-100 to 100]. Usage: /rate <value>"
+msgstr ""
+
+#: bot/modules/tts.py:27
+msgid "Sets the TTS voice pitch, [-100 to 100]. Usage: /pitch <value>"
+msgstr ""
+
+#: bot/modules/tts.py:28
+msgid "Sets the TTS voice volume, [0.1 to 1.0]. Usage: /volume <value>"
+msgstr ""
+
+#: bot/modules/tts.py:29
+msgid "Sets the TTS voice. Usage: /voice <voice_name>"
+msgstr ""
+
+#: bot/modules/tts.py:30
+msgid "Stops the bot's current speech file stream."
+msgstr ""
+
+#: bot/modules/tts.py:31
+msgid "Toggles automatic language detection for text to speech."
+msgstr ""
+
+#: bot/modules/tts.py:32
+msgid ""
+"Lists available TTS voices. Without arguments, lists all available voices "
+"for all languages. Usage: /get_voices <lang_code (Optional)>"
+msgstr ""
+
+#: bot/modules/tts.py:56 bot/modules/tts.py:184
+msgid "Sorry, You are not in the same channel"
+msgstr ""
+
+#: bot/modules/tts.py:60
+msgid "Another speech synthesis is already in progress. Please wait."
+msgstr ""
+
+#: bot/modules/tts.py:64
+msgid "Please provide some text to speak."
+msgstr ""
+
+#: bot/modules/tts.py:96
+msgid "Using voice {voice_name} for {detected_lang}"
+msgstr ""
+
+#: bot/modules/tts.py:99
+msgid ""
+"The detected language ({detected_lang}) is not available in Microsoft "
+"Speech, using Google voices."
+msgstr ""
+
+#: bot/modules/tts.py:105
+msgid "Language detection failed. Using default voice."
+msgstr ""
+
+#: bot/modules/tts.py:117
+msgid "Error during speech synthesis: {e}"
+msgstr ""
+
+#: bot/modules/tts.py:130 bot/modules/tts.py:140
+msgid "Invalid command. Usage: /rate <rate_value>."
+msgstr ""
+
+#: bot/modules/tts.py:136
+msgid "Rate set to {rate}."
+msgstr ""
+
+#: bot/modules/tts.py:138
+msgid "Invalid rate value. Rate should be between -100 and 100."
+msgstr ""
+
+#: bot/modules/tts.py:145 bot/modules/tts.py:155
+msgid "Invalid command. Usage: /pitch <pitch_value>"
+msgstr ""
+
+#: bot/modules/tts.py:151
+msgid "Pitch set to {pitch}."
+msgstr ""
+
+#: bot/modules/tts.py:153
+msgid "Invalid pitch value. Pitch should be between -100 and 100."
+msgstr ""
+
+#: bot/modules/tts.py:160 bot/modules/tts.py:170
+msgid "Invalid command. Usage: /volume <volume_value>"
+msgstr ""
+
+#: bot/modules/tts.py:166
+msgid "Volume set to {volume}."
+msgstr ""
+
+#: bot/modules/tts.py:168
+msgid "Invalid volume value. Volume should be between 0.1 and 1.0."
+msgstr ""
+
+#: bot/modules/tts.py:175
+msgid "Invalid command. Usage: /voice <voice_name>."
+msgstr ""
+
+#: bot/modules/tts.py:179
+msgid "Voice set to {voice_name}."
+msgstr ""
+
+#: bot/modules/tts.py:194
+msgid "Language detection is now ON."
+msgstr ""
+
+#: bot/modules/tts.py:196
+msgid "Language detection is now OFF."
+msgstr ""
+
+#: bot/modules/tts.py:216
+msgid "Name: {voice_name}, ShortName: {short_name}, Locale: {locale}"
+msgstr ""
+
+#: bot/modules/tts.py:220
+msgid "No voices found for the specified language code."
+msgstr ""
+
+#: bot/modules/tts.py:229
+msgid "Error listing voices: {e}"
+msgstr ""

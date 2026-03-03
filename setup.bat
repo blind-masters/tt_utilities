@@ -108,7 +108,7 @@ IF EXIST "mpv.dll" (
     ECHO The audio component ^(mpv.dll^) already exists. Skipping download.
 ) ELSE (
     ECHO Downloading required audio component...
-    "%PYTHON_EXE%" downloader.py --download "https://blindmasters.org/tt_utilities/mpv.dll" "mpv.dll"
+    "%PYTHON_EXE%" downloader.py --download "https://blindmasters.org/mpv.dll" "mpv.dll"
     IF NOT EXIST "mpv.dll" (
         ECHO Error: Failed to download mpv.dll. The bot's audio playback may not work.
         PAUSE
