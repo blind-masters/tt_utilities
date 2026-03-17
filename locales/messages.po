@@ -1,0 +1,916 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-18 00:19+0200\n"
+"PO-Revision-Date: 2026-03-18 00:40+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Audio.cs:19
+msgid ""
+"Accessibility option for clearer left-right cues with HRTF. It attenuates "
+"the opposite ear for your own car sounds only. Press ENTER to toggle."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\MenuItem.cs:115
+msgid "Actions available, press right arrow to view."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Menu.cs:43
+msgid "Add a bot to this game room"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\SavedServers\Menu.cs:34
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Multiplayer.cs:52
+msgid "Add a new server"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Main.cs:26
+msgid ""
+"Adjust category-based volume balance for engine sounds, effects, ambience, "
+"radio, music, and online events."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Multiplayer.cs:157
+msgid "Adventure tracks are loading"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Restore.cs:16
+msgid ""
+"Are you sure you would like to restore all settings to their default values?"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Main.cs:16
+msgid "Audio"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Controls.cs:72
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Controls.cs:77
+msgid ""
+"Auto detects wheel pedal direction from resting position. Use LEFT or RIGHT "
+"to change."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Race.cs:143
+msgid "Automatic"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Audio.cs:20
+msgid "Automatic audio device format"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Race.cs:25
+msgid "Automatic race information"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Menu.cs:116
+msgid "Automatic transmission"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Multiplayer.cs:74
+msgid "Available game rooms"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Multiplayer.cs:27
+msgid "Available servers"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Controls.cs:53
+msgid "Both"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Controls.cs:73
+msgid "Brake pedal direction"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Game\Settings\Language.cs:54
+#: D:\top_speed\top_speed_net\TopSpeed\Game\Updates\Dialog.cs:27
+msgid "Cancel"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Menu.cs:93
+msgid "Cancel and discard changes"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Create.cs:45
+msgid "Cancel room creation"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Menu.cs:41
+msgid "Change game options"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Core.cs:146
+msgid "Check for updates"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Game.cs:49
+msgid "Check for updates on startup"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\Choice.cs:77
+msgid "Choice"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Race.cs:29
+msgid ""
+"Choose how much automatic race information is spoken, such as lap numbers "
+"and player positions. Use LEFT or RIGHT to change."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Race.cs:44
+msgid ""
+"Choose the difficulty level for single races. Use LEFT or RIGHT to change."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Game.cs:19
+msgid ""
+"Choose the language used for menu and spoken interface text. Press ENTER to "
+"select."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Game\Settings\Language.cs:40
+msgid "Choose the language."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Menu.cs:80
+msgid "Choose the number of laps for this room. Use LEFT or RIGHT to change."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Create.cs:24
+msgid "Choose the player capacity from 2 to 10. Use LEFT or RIGHT to change."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Multiplayer.cs:140
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Race.cs:34
+msgid "Choose track type"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Race.cs:18
+msgid ""
+"Choose what information the copilot reports during the race. Use LEFT or "
+"RIGHT to change."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Create.cs:35
+msgid ""
+"Choose whether this room is a race with bots, a multiplayer race without "
+"bots, or a one-on-one game. Use LEFT or RIGHT to change."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Multiplayer.cs:179
+msgid "Choose your transmission mode"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Multiplayer.cs:169
+msgid "Choose your vehicle"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Game\Updates\Check.cs:143
+msgid "Close"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Connection\Connect.cs:127
+msgid "Compatibility warning"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Main.cs:38
+msgid ""
+"Configure default multiplayer hosting settings, including the server port "
+"used by the game."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Main.cs:15
+msgid ""
+"Configure general gameplay and interface behavior, including units, usage "
+"hints, menu behavior, and update checking."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Main.cs:30
+msgid ""
+"Configure input devices, force feedback, progressive keyboard behavior, key "
+"mappings, and menu shortcut mappings."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Main.cs:19
+msgid ""
+"Configure spatial audio behavior, including HRTF processing, stereo "
+"widening, and automatic device format detection."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Menu.cs:92
+msgid "Confirm game options"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Connection\Connect.cs:176
+msgid "Connection failed"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Game\Menu\Wizard.cs:16
+msgid "Continue"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Connection\Connect.cs:132
+msgid "Continue connection"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Main.cs:27
+msgid "Controls"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Race.cs:14
+msgid "Copilot"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Multiplayer.cs:34
+msgid "Create a new game"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Menu.cs:17
+msgid "Create a new game room"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Multiplayer.cs:81
+msgid "Create room controls are loading"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Create.cs:44
+msgid "Create this game room"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Race.cs:19
+msgid "Curve announcements"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Race.cs:100
+msgid "Custom"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Race.cs:30
+msgid "Custom track"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\SavedServers\Delete.cs:16
+msgid "Delete this server?"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\Dialog.cs:75
+msgid "Dialog"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\SavedServers\Form.cs:53
+msgid "Discard changes"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Connection\Connect.cs:133
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Multiplayer.cs:37
+msgid "Disconnect"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Menu.cs:21
+msgid "Disconnect from server"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Game\Updates\Check.cs:143
+msgid "Download update"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Game\Updates\Dialog.cs:22
+msgid "Downloading update..."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Audio.cs:12
+msgid "Enable HRTF audio"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Game.cs:44
+msgid "Enable menu navigation panning"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Game.cs:38
+msgid "Enable menu wrapping"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Game.cs:34
+msgid "Enable usage hints"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Controls.cs:23
+msgid ""
+"Enables force feedback or vibration if your controller supports it. Press "
+"ENTER to toggle."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Multiplayer.cs:15
+msgid "Enter the IP address or domain manually"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Core.cs:147
+msgid "Exit Game"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Controls.cs:20
+msgid "Force feedback"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Main.cs:12
+msgid "Game settings"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Create.cs:31
+msgid "Game type"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Controls.cs:106
+msgid "Global shortcuts"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Connection\Discovery.cs:48
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Menu.cs:130
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Menu.cs:150
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Online.cs:40
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Options.cs:175
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Options.cs:192
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\SavedServers\Menu.cs:35
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Race.cs:261
+msgid "Go back"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Menu.cs:119
+msgid "Go back to vehicle selection"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Race.cs:60
+msgid ""
+"How many labs should the session be. This applys to single race, time trial "
+"and multiPlayer modes."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Game.cs:20
+msgid "Include custom tracks in randomization"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Game.cs:24
+msgid "Include custom vehicles in randomization"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Multiplayer.cs:13
+msgid "Join a game on the local network"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Multiplayer.cs:91
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Multiplayer.cs:107
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Multiplayer.cs:127
+msgid "Join a game room first"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Menu.cs:18
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Multiplayer.cs:35
+msgid "Join an existing game"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Controls.cs:52
+msgid "Joystick"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Controls.cs:51
+msgid "Keyboard"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Game\Settings\Language.cs:78
+#, csharp-format
+msgid "Language remains {0}."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Game\Settings\Language.cs:74
+#, csharp-format
+msgid "Language set to {0}."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Game.cs:62
+#, csharp-format
+msgid "Language: {0}"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Session.cs:23
+msgid "Leave server?"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Menu.cs:47
+msgid "Leave this game room"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Actions.cs:26
+msgid "Leave this game room?"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Multiplayer.cs:14
+msgid "Manage saved servers"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Race.cs:144
+msgid "Manual"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Menu.cs:117
+msgid "Manual transmission"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Controls.cs:37
+msgid "Map joystick keys"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Controls.cs:36
+msgid "Map keyboard keys"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Controls.cs:38
+msgid "Map menu shortcuts"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Create.cs:20
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Menu.cs:82
+msgid "Maximum players allowed in this room"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Game.cs:75
+msgid "Menu sounds"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Core.cs:144
+msgid "MultiPlayer game"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Multiplayer.cs:39
+msgid "Multiplayer lobby"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Game\Updates\Check.cs:134
+msgid "New version detected."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Restore.cs:13
+msgid "No"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Browser.cs:46
+msgid "No game rooms found"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Game\Settings\Language.cs:34
+msgid "No languages are available."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Chat\Buffers.cs:28
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Core.cs:56
+msgid "No messages yet."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Multiplayer.cs:117
+msgid "No players are currently connected."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Menu.cs:138
+msgid "No players are currently in this game room."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Controls.cs:173
+msgid "No shortcut group selected."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Controls.cs:116
+msgid "No shortcuts in this group."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Actions.cs:143
+msgid "No, continue preparing"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Game\Multiplayer\Quit.cs:24
+msgid "No, continue racing"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\SavedServers\Delete.cs:20
+msgid "No, keep this server"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Session.cs:28
+msgid "No, stay connected"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Actions.cs:31
+msgid "No, stay in this game room"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Race.cs:35
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Race.cs:73
+msgid "Number of computer players"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Menu.cs:76
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Race.cs:30
+msgid "Number of laps"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Connection\Connect.cs:181
+#: D:\top_speed\top_speed_net\TopSpeed\Game\Menu\Dialogs.cs:30
+#: D:\top_speed\top_speed_net\TopSpeed\Game\Settings\Issues.cs:47
+#: D:\top_speed\top_speed_net\TopSpeed\Game\Updates\Dialog.cs:53
+msgid "OK"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Game\Menu\Calibration.cs:30
+#: D:\top_speed\top_speed_net\TopSpeed\Game\Menu\Calibration.cs:34
+msgid "Ok"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Multiplayer.cs:120
+msgid "Online players"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Menu.cs:64
+msgid "Only the host can change game options."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Menu.cs:20
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Core.cs:145
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Multiplayer.cs:36
+msgid "Options"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Multiplayer.cs:110
+msgid "Players in room"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Menu.cs:74
+msgid ""
+"Press ENTER to choose race tracks, street adventure tracks, or a random "
+"track."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Create.cs:43
+msgid ""
+"Press ENTER to enter a room name. Leave it empty to use an automatic name."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Game\Updates\Dialog.cs:40
+msgid "Press OK to close the game and install the update."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Controls.cs:24
+msgid "Progressive keyboard input"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\Question.cs:90
+msgid "Question"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Core.cs:141
+msgid "Quick start"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Actions.cs:138
+msgid "Quit race preparation?"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Game\Multiplayer\Quit.cs:19
+msgid "Quit race?"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Main.cs:31
+msgid "Race settings"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Options.cs:172
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Multiplayer.cs:137
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Race.cs:28
+msgid "Race track"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Multiplayer.cs:147
+msgid "Race tracks are loading"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Options.cs:174
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Options.cs:191
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Race.cs:31
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Race.cs:49
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Race.cs:83
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Race.cs:101
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Race.cs:134
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Race.cs:145
+msgid "Random"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Menu.cs:118
+msgid "Random transmission mode"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Menu.cs:108
+msgid "Random vehicle"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Game.cs:53
+msgid "Recalibrate screen reader rate"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Menu.cs:45
+msgid "Remove the last bot that was added"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Main.cs:42
+msgid "Reset all configurable settings back to their default values."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Main.cs:39
+msgid "Restore default settings"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Browser.cs:72
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Menu.cs:33
+msgid "Return to multiplayer lobby"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Menu.cs:57
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Menu.cs:65
+msgid "Return to room controls"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Multiplayer.cs:94
+msgid "Room controls"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\SavedServers\Form.cs:52
+msgid "Save changes"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\SavedServers\Form.cs:49
+msgid "Save changes before closing?"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Race.cs:56
+msgid "Select a custom track"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Race.cs:108
+msgid "Select a custom vehicle"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Multiplayer.cs:150
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Multiplayer.cs:160
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Race.cs:51
+msgid "Select a track"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Race.cs:103
+msgid "Select a vehicle"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Controls.cs:56
+msgid "Select input device"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Game.cs:80
+msgid "Select the menu sound preset. Use LEFT or RIGHT to change."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Menu.cs:86
+msgid ""
+"Select the player capacity for this room. The host can start with fewer "
+"players. Use LEFT or RIGHT to change."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Race.cs:148
+msgid "Select transmission mode"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Multiplayer.cs:65
+msgid "Server details"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Multiplayer.cs:62
+msgid "Server form is loading"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Main.cs:35
+msgid "Server settings"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Main.cs:34
+msgid ""
+"Set race behavior defaults such as copilot callouts, curve announcements, "
+"automatic info, laps, computer opponents, and difficulty."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Race.cs:39
+msgid ""
+"Sets how many computer-controlled cars will race against you. Use LEFT or "
+"RIGHT to change by 1, PAGE UP or PAGE DOWN to change by 10, HOME for "
+"maximum, END for minimum."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Race.cs:34
+msgid ""
+"Sets how many laps the session will be for single race, time trial, and "
+"multiplayer. Use LEFT or RIGHT to change by 1, PAGE UP or PAGE DOWN to "
+"change by 10, HOME for maximum, END for minimum."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Controls.cs:94
+msgid ""
+"Sets how much small steering movement is ignored around center. Default is 1 "
+"degree. Use LEFT or RIGHT to change."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Game\Menu\Wizard.cs:11
+msgid "Setup wizard."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Core.cs:143
+msgid "Single race"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Race.cs:40
+msgid "Single race difficulty"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Menu.cs:39
+msgid "Start this game now"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Controls.cs:78
+msgid "Steering dead zone"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Audio.cs:16
+msgid "Stereo widening for own car"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Options.cs:173
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Race.cs:29
+msgid "Street adventure"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Race.cs:24
+msgid ""
+"Switch between fixed distance and speed dependent curve announcements. Press "
+"ENTER to change."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Game.cs:33
+msgid "Switch between metric and imperial units. Press ENTER to change."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Game\Updates\Dialog.cs:39
+msgid "The update download is complete."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Controls.cs:68
+msgid "Throttle pedal direction"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Core.cs:142
+msgid "Time trial"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Multiplayer.cs:176
+msgid "Transmission selection is loading"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Game.cs:28
+msgid "Units"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Game\Updates\Dialog.cs:43
+msgid "Update download complete."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\Multiplayer.cs:167
+msgid "Vehicle selection is loading"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Main.cs:20
+msgid "Volume settings"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Game\Menu\Wizard.cs:12
+msgid ""
+"Welcome to Top Speed setup. On the next screens, you will choose your "
+"language and then calibrate the screen-reader speaking rate."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Game\Updates\Check.cs:127
+msgid "What's new in this version:"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Audio.cs:15
+msgid ""
+"When checked, Three-D audio uses HRTF spatialization for more realistic "
+"positioning. Press ENTER to toggle."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Game.cs:37
+msgid ""
+"When checked, menu items can speak usage hints after a short delay. Press "
+"ENTER to toggle."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Game.cs:48
+msgid ""
+"When checked, menu navigation sounds pan left or right based on the item "
+"position. Press ENTER to toggle."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Game.cs:42
+msgid ""
+"When checked, menu navigation wraps from the last item to the first. Press "
+"ENTER to toggle."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Game.cs:23
+msgid ""
+"When checked, random track selection can include custom tracks. Press ENTER "
+"to toggle."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Game.cs:27
+msgid ""
+"When checked, random vehicle selection can include custom vehicles. Press "
+"ENTER to toggle."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Game.cs:52
+msgid ""
+"When checked, the game checks for updates automatically after the logo. "
+"Press ENTER to toggle."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Audio.cs:23
+msgid ""
+"When checked, the game uses the device channel count and sample rate. "
+"Restart required. Press ENTER to toggle."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Controls.cs:35
+msgid ""
+"When enabled, throttle, brake, and steering ramp in over time instead of "
+"jumping instantly to full value. Press LEFT or RIGHT to change."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Menu.cs:46
+msgid "Who is currently present in this game room"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Menu.cs:19
+msgid "Who is online"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\registry\options\Restore.cs:12
+msgid "Yes"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\SavedServers\Delete.cs:19
+msgid "Yes, delete this server"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Session.cs:27
+msgid "Yes, disconnect from the server"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Actions.cs:30
+msgid "Yes, leave this game room"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Actions.cs:142
+msgid "Yes, quit race preparation"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Game\Multiplayer\Quit.cs:23
+msgid "Yes, quit the race"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Menu.cs:32
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Menu.cs:56
+#: D:\top_speed\top_speed_net\TopSpeed\Core\Multiplayer\Rooms\Menu.cs:129
+msgid "You are not currently inside a game room."
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\CheckBox.cs:45
+msgid "checked"
+msgstr ""
+
+#: D:\top_speed\top_speed_net\TopSpeed\Menu\CheckBox.cs:45
+msgid "not checked"
+msgstr ""
